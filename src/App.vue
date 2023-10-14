@@ -14,6 +14,7 @@ const drawTest = () => {
     .range([margin.left, width - margin.right])
     .padding(0.1)
 
+    
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(data) || 0])
     .range([height - margin.bottom, margin.top])
