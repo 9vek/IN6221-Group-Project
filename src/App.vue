@@ -10,7 +10,7 @@ const margin = { top: 20, right: 20, bottom: 30, left: 40 }
 const drawTest = () => {
   // Set up scales
   const xScale = d3.scaleBand()
-    .domain(data.map((d, i) => i.toString()))
+    .domain(data.map((_, i) => i.toString()))
     .range([margin.left, width - margin.right])
     .padding(0.1)
 
@@ -29,7 +29,7 @@ const drawTest = () => {
     .data(data)
     .enter()
     .append("rect")
-    .attr("x", (d, i) => xScale(i.toString()))
+    .attr("x", (_, i) => xScale(i.toString()) || 0)
     .attr("y", d => yScale(d))
     .attr("width", xScale.bandwidth())
     .attr("height", d => height - margin.bottom - yScale(d))
@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class='svg-canvas'></div>
+  <div class='svg-canvas flex'></div>
 </template>
 
 <style scoped>
