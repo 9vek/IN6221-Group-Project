@@ -50,7 +50,7 @@ brew install node
 ```
 装完后重启终端，然后敲：
 ```sh
-npde -v
+node -v
 ```
 和
 ```sh
