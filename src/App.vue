@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import * as d3 from "d3"
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 const data = [10, 20, 30, 40, 50]
 const width = 500
@@ -14,7 +16,7 @@ const drawTest = () => {
     .range([margin.left, width - margin.right])
     .padding(0.1)
 
-    
+
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(data) || 0])
     .range([height - margin.bottom, margin.top])
@@ -44,8 +46,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class='svg-canvas flex'></div>
+  <div ref="outmost" class="h-screen overflow-scroll scrollbar-none">
+    <Header />
+    <div class="h-screen overflow-hidden scrollbar-none">
+      <router-view></router-view>
+    </div>
+    <Footer />
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
