@@ -11,18 +11,22 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: "home",
       component: Index,
     }, 
     {
       path: '/1',
+      name: "page1", // remember to modify
       component: Page1,
     }, 
     {
       path: '/2',
+      name: "page2", // remember to modify
       component: Page2,
     }, 
     {
       path: '/3',
+      name: "page3", // remember to modify
       component: Page3,
     }, 
   ]
