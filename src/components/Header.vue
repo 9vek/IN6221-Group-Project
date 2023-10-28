@@ -1,84 +1,59 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { BrandGithub } from '@vicons/tabler'
 
+const router = useRouter()
 
-export default {
-    setup () {
-        const router = useRouter()
-        return {
-            router
-        }
-    },
-     components: {
-        BrandGithub
-     },
-    created() {
-        this.$router.afterEach((to, _) => {
-        switch (to.name) {
-            case 'home':
-            this.barColor = '#edf1f9'
-            this.ghStyle = "btn btn-circle btn-neural"
-            break
-            case 'page1':
-            this.barColor = '#fffae8'
-            this.ghStyle = "btn btn-circle btn-primary"
-            break
-            case 'page2':
-            this.barColor = '#e2f4f6'
-            this.ghStyle = "btn btn-circle btn-secondary"
-            break
-            case 'page3':
-            this.barColor = '#eee9f6'
-            this.ghStyle = "btn btn-circle btn-accent"
-            break
-            default:
-            this.barColor = '#edf1f9'
-            this.ghStyle = "btn btn-circle btn-neural"
-        }
-    })
-  },
-  data() {
-    return {
-        barColor: '#edf1f9',
-        ghStyle: "btn btn-circle btn-neural"
-    }
-  },
-  methods: {
-    getGhStyle () {
-        return this.ghStyle
-    },
+const barColor = ref('#edf1f9')
+const ghStyle = ref('btn btn-circle btn-neural')
+
+router.afterEach((to, _) => {
+  if (to.path == '/') {
+    barColor.value = '#edf1f9'
+    ghStyle.value = "btn btn-circle btn-neural"
   }
-}
+  else if (to.path == '/1') {
+    barColor.value = '#fffae8'
+    ghStyle.value = "btn btn-circle btn-primary"
+  }
+  else if (to.path == '/2') {
+    barColor.value = '#e2f4f6'
+    ghStyle.value = "btn btn-circle btn-secondary"
+  }
+  else {
+    barColor.value = '#eee9f6'
+    ghStyle.value = "btn btn-circle btn-accent"
+  }
+})
 </script>
 
 <template>
-    <div :style="{ backgroundColor: barColor }" class="navbar">
-        <div class="navbar-start">
-          <a @click="() => router.push('/')" class="btn btn-ghost normal-case text-xl">Home</a>
-        </div>
+  <div :style="{ backgroundColor: barColor }" class="navbar">
+    <div class="navbar-start">
+      <a @click="() => router.push('/')" class="btn btn-ghost normal-case text-xl">Home</a>
+    </div>
 
-        <div class="navbar-center lg:flex">
-          <ul class="menu menu-horizontal gap-2">
-            <button @click="() => router.push('/1')" class="btn btn-primary">
-                Item 1
-            </button>
-            <button @click="() => router.push('/2')" class="btn btn-secondary">
-                Item 2
-            </button>
-            <button @click="() => router.push('/3')" class="btn btn-accent">
-                Item 3
-            </button>
-          </ul>
-        </div>
-        
-        <div class="navbar-end">
-            <button :class="getGhStyle()">
-                <BrandGithub class="h-5 w-5"/>
-            </button>
-        </div>
-      </div>
+    <div class="navbar-center lg:flex">
+      <ul class="menu menu-horizontal gap-2">
+        <button @click="() => router.push('/1')" class="btn btn-primary">
+          Item 1
+        </button>
+        <button @click="() => router.push('/2')" class="btn btn-secondary">
+          Item 2
+        </button>
+        <button @click="() => router.push('/3')" class="btn btn-accent">
+          Item 3
+        </button>
+      </ul>
+    </div>
+
+    <div class="navbar-end">
+      <button :class="ghStyle">
+        <BrandGithub class="h-5 w-5" />
+      </button>
+    </div>
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
