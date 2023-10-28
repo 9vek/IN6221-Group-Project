@@ -9,6 +9,11 @@ export default {
   },
   plugins: [
     require('tailwind-scrollbar'),
+    require('@tailwindcss/typography'),
+    require('daisyui'),
   ],
+  daisyui: {
+    themes: ["pastel", "dark"],
+  },
 }
 
