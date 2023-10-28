@@ -29,7 +29,7 @@ router.afterEach((to, _) => {
 </script>
 
 <template>
-  <div :style="{ backgroundColor: barColor }" class="navbar">
+  <div :style="{ backgroundColor: barColor }" class="navbar transition-all">
     <div class="navbar-start">
       <a @click="() => router.push('/')" class="btn btn-ghost normal-case text-xl">Home</a>
     </div>
@@ -49,7 +49,7 @@ router.afterEach((to, _) => {
     </div>
 
     <div class="navbar-end">
-      <button :class="ghStyle">
+      <button class="transition-all" :class="ghStyle">
         <BrandGithub class="h-5 w-5" />
       </button>
     </div>
