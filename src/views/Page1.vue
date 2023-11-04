@@ -1,17 +1,14 @@
 <script setup lang='ts'>
-
+import map_bubble from '../components/map_bubble.vue'
+import map_region from '../components/map_region.vue'
 </script>
 
 <template>
-    <div class="hero min-h-screen bg-primary">
-        <div class="hero-content text-center">
-          <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Hello there</h1>
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button class="btn btn-neural">Get Started</button>
-          </div>
-        </div>
+    <div class="bg-primary">
+      <div class="columns-2">
+        <map_bubble/>
       </div>
+    </div>
 </template>
 
 <style scoped></style>

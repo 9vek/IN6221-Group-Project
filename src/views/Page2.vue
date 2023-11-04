@@ -1,16 +1,16 @@
 <script setup lang='ts'>
-
+import bar_chart from '../components/bar_chart.vue'
+import line_chart from '../components/line_chart.vue'
 </script>
 
 <template>
     <div class="hero min-h-screen bg-secondary">
-        <div class="hero-content text-center">
-          <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Hello there</h1>
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </div>
+      <div class="columns-2">
+        <bar_chart/>
+        <bar_chart/>
+        <line_chart/>
+        <line_chart/>
+      </div>
       </div>
 </template>
 
