@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { defineProps, onMounted } from 'vue'
 import * as d3 from "d3"
 
-const drawTest = () => {
+const props = defineProps({
+  file: {
+    file: String,
+    default: String,
+    required: true,
+  }
+})
+
+const drawTest = (file: String) => {
 
 // set the dimensions and margins of the graph
 const width = 500,
@@ -39,7 +47,7 @@ const outerArc = d3.arc()
   .innerRadius(radius * 0.9)
   .outerRadius(radius * 0.9)
 
-  d3.csv("../src/data/csv/PieChartData.csv").then(function(data) {
+  d3.csv(file).then(function(data) {
 // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
 svg
   .selectAll('allSlices')
@@ -88,7 +96,7 @@ svg
 }
 
 onMounted(() => {
-  drawTest()
+  drawTest(props.file)
 })
 </script>
 

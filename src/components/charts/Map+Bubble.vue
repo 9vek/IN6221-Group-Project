@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { defineProps, onMounted } from 'vue'
 import * as d3 from "d3"
 
-const drawTest = () => {
+const props = defineProps({
+  file: {
+    file: String,
+    default: String,
+    required: true,
+  }
+})
+
+const drawTest = (file: String) => {
 // set width and height of svg
 const width = 800
 const height = 400
@@ -22,7 +30,7 @@ const projection = d3.geoMercator()
 // Load external data and boot
 Promise.all([
   d3.json("./src/data/geo/Singapore.geojson"),
-  d3.json("./src/data/geo/WasteTreatmentGEOJSON.geojson")
+  d3.json(file)
 ]).then(function(data) {
 	let map_data = data[0]
 	let info_data = data[1]
@@ -87,7 +95,7 @@ console.log(info_data)
 }
 
 onMounted(() => {
-  drawTest()
+  drawTest(props.file)
 })
 </script>
 

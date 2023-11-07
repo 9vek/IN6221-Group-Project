@@ -1,32 +1,41 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { defineProps, onMounted } from 'vue'
 import * as d3 from "d3"
 
-const drawTest = () => {
+const props = defineProps({
+  file: {
+    file: String,
+    default: String,
+    required: true,
+  }
+})
 
-// set the dimensions and margins of the graph
-const margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+const drawTest = (file: string) => {
 
-// append the svg object to the body of the page
-const svg = d3.select("#line_chart")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+  // set the dimensions and margins of the graph
+  const margin = {top: 10, right: 30, bottom: 30, left: 60},
+      width = 460 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
+
+  // append the svg object to the body of the page
+  const svg = d3.select("#line_chart")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
 //Read the data
-d3.csv("./src/data/csv/SolidWasteManagementTotalWasteLandfilledAnnual.csv",
+  d3.csv(file,
 
-  // When reading the csv, I must format variables:
-  function(d){
-    return { date : d3.timeParse("%Y")(d.year), value : d.total_waste_landfilled }
-  }).then(
+    // When reading the csv, I must format variables:
+    function(d){
+      console.log(Object.keys(d)[0])
+      return { date : d3.timeParse("%Y")(d[Object.keys(d)[0]]), value : d[Object.keys(d)[1]] }
+    }).then(
 
-  // Now I can use this dataset:
-  function(data) {
+    // Now I can use this dataset:
+    function(data) {
 
     // Add X axis --> it is a date format
     const x = d3.scaleTime()
@@ -74,12 +83,13 @@ d3.csv("./src/data/csv/SolidWasteManagementTotalWasteLandfilledAnnual.csv",
         .y(function(d) { return y(d.value) })
         )
 
-})
+  })
 }
 
 
+//周期函数
 onMounted(() => {
-  drawTest()
+  drawTest(props.file)
 })
 </script>
 

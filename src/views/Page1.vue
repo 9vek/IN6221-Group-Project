@@ -1,12 +1,14 @@
 <script setup lang='ts'>
-import map_bubble from '../components/map_bubble.vue'
-import map_region from '../components/map_region.vue'
+import map_bubble from '../components/charts/Map+Bubble.vue'
+
+import { ref } from 'vue'
+const ewaste_rec = ref('./src/data/geo/EwasteRecycling_NEW.geojson')
 </script>
 
 <template>
     <div class="bg-primary">
       <div class="columns-2">
-        <map_bubble/>
+        <map_bubble :file="ewaste_rec"/>
       </div>
     </div>
 </template>

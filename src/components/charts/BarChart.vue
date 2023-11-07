@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { defineProps, onMounted } from 'vue'
 import * as d3 from "d3"
 
-const drawTest = () => {
+const props = defineProps({
+  file: {
+    file: String,
+    default: String,
+    required: true,
+  }
+})
+
+const drawTest = (file: String) => {
 // set the dimensions and margins of the graph
 const margin = {top: 10, right: 30, bottom: 20, left: 50},
     width = 460 - margin.left - margin.right,
@@ -17,13 +25,13 @@ const svg = d3.select("#bar_chart")
     .attr("transform",`translate(${margin.left},${margin.top})`);
 
 // Parse the Data
-d3.csv("./src/data/csv/WasteDisposedOfAndRecycledAnnual.csv").then( function(data) {
+d3.csv(file).then( function(data) {
 
   // List of subgroups = header of the csv files = soil condition here
   const subgroups = data.columns.slice(1)
 
   // List of groups = species here = value of the first column called group -> I show them on the X axis
-  const groups = data.map(d => d.year)
+  const groups = data.map(d => d[Object.keys(d)[0]])
 
   console.log(groups)
 
@@ -72,11 +80,10 @@ d3.csv("./src/data/csv/WasteDisposedOfAndRecycledAnnual.csv").then( function(dat
 
 })
 
-
 }
 
 onMounted(() => {
-  drawTest()
+  drawTest(props.file)
 })
 </script>
 
