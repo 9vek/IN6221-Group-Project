@@ -9,7 +9,7 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIn
 </script>
 
 <template>
-    <div class="hero min-h-screen bg-secondary">
+    <div class="hero h-screen bg-secondary">
       <div class="columns-2">
         <BarChart :file="wasteDisposedRecycled"/>
         <BarChart :file="wasteDisposedRecycled"/>

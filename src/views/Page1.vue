@@ -1,16 +1,12 @@
 <script setup lang='ts'>
-import mapBubble from '../components/charts/Map+Bubble.vue'
-
-import { ref } from 'vue'
-const ewasteRec = ref('./src/data/geo/EwasteRecycling_NEW.geojson')
+import mapBubble from '../components/charts/MapWithBubble.vue'
+const ewasteData = './src/data/geo/EwasteRecycling_NEW.geojson'
 </script>
 
 <template>
-    <div class="bg-primary">
-      <div class="columns-2">
-        <mapBubble :file="ewasteRec"/>
-      </div>
-    </div>
+  <div class="bg-primary h-screen grid grid-cols-1 place-items-center">
+      <mapBubble :file="ewasteData" />
+  </div>
 </template>
 
 <style scoped></style>
