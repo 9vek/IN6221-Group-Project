@@ -1,16 +1,16 @@
 <script setup lang='ts'>
-import pie_chart from '../components/charts/PieChart.vue'
-import donut_chart from '../components/charts/DonutChart.vue'
+import pieChart from '../components/charts/PieChart.vue'
+import donutChart from '../components/charts/DonutChart.vue'
 
 import { ref } from 'vue'
-const pie_chart_test = ref('./src/data/csv/PieChartTest.csv')
+const pieChartTest = ref('./src/data/csv/PieChartTest.csv')
 </script>
 
 <template>
     <div class="hero min-h-screen bg-accent">
       <div class="columns-2">
-        <pie_chart :file="pie_chart_test"/>
-        <donut_chart :file="pie_chart_test"/>
+        <pieChart :file="pieChartTest"/>
+        <donutChart :file="pieChartTest"/>
       </div>
     </div>
 </template>

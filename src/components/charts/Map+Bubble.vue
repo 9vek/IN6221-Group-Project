@@ -32,13 +32,13 @@ Promise.all([
   d3.json("./src/data/geo/Singapore.geojson"),
   d3.json(file)
 ]).then(function(data) {
-	let map_data = data[0]
-	let info_data = data[1]
-console.log(info_data)
+	let mapData = data[0]
+	let infoData = data[1]
+
     // Draw the map
     svg.append("g")
         .selectAll("path")
-        .data(map_data.features)
+        .data(mapData.features)
         .join("path")
           .attr("fill", "#b8b8b8")
           .attr("d", d3.geoPath()
@@ -78,7 +78,7 @@ console.log(info_data)
     // Add circles:
     svg
       .selectAll("myCircles")
-      .data(info_data.features)
+      .data(infoData.features)
       .join("circle")
         .attr("cx", d => projection(d.geometry.coordinates)[0])
         .attr("cy", d => projection(d.geometry.coordinates)[1])

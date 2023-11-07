@@ -21,7 +21,7 @@ const width = 500,
 const radius = Math.min(width, height) / 2 - margin
 
 // append the svg object to the div called 'my_dataviz'
-const svg = d3.select("#donut_chart")
+const svg = d3.select("#pieChart")
   .append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -101,7 +101,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="bar_chart"></div>
+  <div id="pieChart"></div>
 </template>
 
 <style scoped>

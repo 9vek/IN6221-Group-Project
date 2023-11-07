@@ -17,7 +17,7 @@ const margin = {top: 10, right: 30, bottom: 20, left: 50},
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-const svg = d3.select("#bar_chart")
+const svg = d3.select("#barChart")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -88,7 +88,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="bar_chart"></div>
+  <div id="barChart"></div>
 </template>
 
 <style scoped>

@@ -18,7 +18,7 @@ const drawTest = (file: string) => {
       height = 400 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
-  const svg = d3.select("#line_chart")
+  const svg = d3.select("#lineChart")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -94,7 +94,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="line_chart"></div>
+  <div id="lineChart"></div>
 </template>
 
 <style scoped>
