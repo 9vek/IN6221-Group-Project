@@ -31,7 +31,7 @@ const drawTest = (file: String) => {
   // Compute the position of each group on the pie:
   const pie = d3.pie()
     .sort(null) // Do not sort group by size
-    .value(d => d.percent)
+    .value(d => d.recycling_rate)
 
   // The arc generator
   const arc = d3.arc()
@@ -50,7 +50,7 @@ const drawTest = (file: String) => {
       .data(pie(data))
       .join('path')
       .attr('d', arc)
-      .attr('fill', d => color(d.data.browser))
+      .attr('fill', d => color(d.data.waste_type))
       .attr("stroke", "white")
       .style("stroke-width", "2px")
       .style("opacity", 0.7)
@@ -77,7 +77,7 @@ const drawTest = (file: String) => {
       .selectAll('allLabels')
       .data(pie(data))
       .join('text')
-      .text(d => d.data.browser)
+      .text(d => d.data.waste_type)
       .attr('transform', function (d) {
         const pos = outerArc.centroid(d);
         const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2

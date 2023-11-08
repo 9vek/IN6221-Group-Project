@@ -3,7 +3,7 @@ import pieChart from '../components/charts/PieChart.vue'
 import donutChart from '../components/charts/DonutChart.vue'
 
 import { ref } from 'vue'
-const pieChartTest = ref('./src/data/csv/PieChartTest.csv')
+const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/2000.csv')
 </script>
 
 <template>

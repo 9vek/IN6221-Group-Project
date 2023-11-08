@@ -1,15 +1,15 @@
-,waste_type,recycling_rate
-154,Construction Debris,99
-155,Used Slag,98
-156,Ferrous Metal,95
-157,Scrap Tyres,83
-158,Non-Ferrous Metal,88
-159,Wood,64
-160,Paper/Cardboard,56
-161,Horticultural Waste,37
-162,Plastics,11
-163,Glass,29
-164,Food,10
-165,Textiles,13
-166,Ash and Sludge,0
-167,Others,1
+waste_type,recycling_rate
+Construction Debris,99
+Used Slag,98
+Ferrous Metal,95
+Scrap Tyres,83
+Non-Ferrous Metal,88
+Wood,64
+Paper/Cardboard,56
+Horticultural Waste,37
+Plastics,11
+Glass,29
+Food,10
+Textiles,13
+Ash and Sludge,0
+Others,1
