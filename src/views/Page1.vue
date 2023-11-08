@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import mapBubble from '../components/charts/MapWithBubble.vue'
-const ewasteData = './src/data/geo/EwasteRecycling_NEW.geojson'
+const ewasteData = './src/data/geo/filtered_WasteTreatmentGEOJSON.geojson'
 </script>
 
 <template>

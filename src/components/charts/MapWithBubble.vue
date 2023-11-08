@@ -62,8 +62,14 @@ const drawTest = (file: String) => {
       var xPosition = event.pageX;
       var yPosition = event.pageY;
 
+    var tipString: string = ""
+    for (const [key, value] of Object.entries(d.properties)) {
+        console.log(key, ":",value);
+        tipString += key + ": " + value + "<br/>"
+    }
+
       Tooltip
-        .html(d.properties.Name + "<br>" + d.properties.Description)
+        .html(tipString)
         .style("left", xPosition + "px")
         .style("top", yPosition + "px")
     }

@@ -7,7 +7,7 @@ const pieChartTest = ref('./src/data/csv/PieChartTest.csv')
 </script>
 
 <template>
-    <div class="hero min-h-screen bg-accent">
+    <div class="h-screen grid grid-cols-1 place-items-center bg-accent">
       <div class="columns-2">
         <pieChart :file="pieChartTest"/>
         <donutChart :file="pieChartTest"/>

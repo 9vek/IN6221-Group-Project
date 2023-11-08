@@ -7,10 +7,21 @@ const props = defineProps({
     file: String,
     default: String,
     required: true,
-  }
+  }, 
+  title: {
+    title: String,
+    default: String,
+    required: true,
+  },
+  yText: {
+    yText: String,
+    default: String,
+    required: true,
+  },
+  
 })
 
-const drawTest = (file: string) => {
+const drawTest = (file: string, title: string, yText: string) => {
 
   // set the dimensions and margins of the graph
   const margin = {top: 10, right: 30, bottom: 30, left: 60},
@@ -24,6 +35,14 @@ const drawTest = (file: string) => {
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // chart title
+      svg.append("text")
+       .attr("transform", "translate(100,0)")
+       .attr("x", -50) // TODO: 错位
+       .attr("y", 50)
+       .attr("font-size", "24px")
+       .text(title)
 
 //Read the data
   d3.csv(file,
@@ -43,17 +62,31 @@ const drawTest = (file: string) => {
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", `translate(0, ${height})`)
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .append("text") // TODO: 错位不显示
+         .attr("y", height - 250)
+         .attr("x", width - 100)
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text("Year");
 
     // Max value observed:
     const max = d3.max(data, function(d) { return +d.value; })
+    const min = d3.min(data, function(d) { return +d.value; })
 
     // Add Y axis
     const y = d3.scaleLinear()
-      .domain([0, max])
+      .domain([min/1.05, max])
       .range([ height, 0 ]);
     svg.append("g")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .append("text") // TODO: 样式调整
+         .attr("transform", "rotate(-90)")
+         .attr("y", 6)
+         .attr("dy", "-5.1em")
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text(yText);
 
     // Set the gradient
     svg.append("linearGradient")
@@ -87,9 +120,8 @@ const drawTest = (file: string) => {
 }
 
 
-//周期函数
 onMounted(() => {
-  drawTest(props.file)
+  drawTest(props.file, props.title, props.yText)
 })
 </script>
 

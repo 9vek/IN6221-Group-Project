@@ -3,20 +3,29 @@ import BarChart from '../components/charts/BarChart.vue'
 import LineChart from '../components/charts/LineChart.vue'
 
 import { ref } from 'vue'
+const wasteDisposedRecycledTitle = ref("Waste Disposed of and Recycled")
+const wasteDisposedRecycledY = ref("Million Tons")
 const wasteDisposedRecycled = ref('./src/data/csv/WasteDisposedOfAndRecycledAnnual.csv')
+
 const solidFilled = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilledAnnual.csv')
+const solidFilledTitle = ref("Total Waste Landfilled")
+const solidFilledY = ref("Million Tonnes")
+
+
+const solidEnergyTitle = ref("Energy Produced From Incineration")
+const solidEnergyY = ref("MWh")
 const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIncinerationAnnual.csv')
 </script>
 
 <template>
-    <div class="hero h-screen bg-secondary">
+    <div class="h-screen grid grid-cols-1 place-items-center bg-secondary">
       <div class="columns-2">
-        <BarChart :file="wasteDisposedRecycled"/>
-        <BarChart :file="wasteDisposedRecycled"/>
-        <LineChart :file="solidFilled" />
-        <LineChart :file="solidEnergy"/>
+        <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY"/>
+        <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY"/>
+        <LineChart :file="solidFilled" :title="solidFilledTitle" :y-text="solidFilledY"/>
+        <LineChart :file="solidEnergy" :title="solidEnergyTitle" :y-text="solidEnergyY"/>
       </div>
-      </div>
+    </div>
 </template>
 
 <style scoped></style>

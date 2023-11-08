@@ -7,10 +7,20 @@ const props = defineProps({
     file: String,
     default: String,
     required: true,
+  }, 
+  title: {
+    title: String,
+    default: String,
+    required: true,
+  }, 
+  yText: {
+    yText: String,
+    default: String,
+    required: true,
   }
 })
 
-const drawTest = (file: String) => {
+const drawTest = (file: string, title: string, yText: string) => {
 // set the dimensions and margins of the graph
 const margin = {top: 10, right: 30, bottom: 20, left: 50},
     width = 460 - margin.left - margin.right,
@@ -24,6 +34,13 @@ const svg = d3.select("#barChart")
   .append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`);
 
+  svg.append("text")
+      .attr("transform", "translate(100,0)")
+      .attr("x", -50)
+      .attr("y", 50) // TODO: 错位
+      .attr("font-size", "24px")
+      .text(title)
+
 // Parse the Data
 d3.csv(file).then( function(data) {
 
@@ -33,8 +50,6 @@ d3.csv(file).then( function(data) {
   // List of groups = species here = value of the first column called group -> I show them on the X axis
   const groups = data.map(d => d[Object.keys(d)[0]])
 
-  console.log(groups)
-
   // Add X axis
   const x = d3.scaleBand()
       .domain(groups)
@@ -42,14 +57,29 @@ d3.csv(file).then( function(data) {
       .padding([0.2])
   svg.append("g")
     .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(x).tickSize(0));
+    .call(d3.axisBottom(x).tickSize(0))
+    .append("text")
+         .attr("y", height - 250) //TODO: 错位不显示
+         .attr("x", width - 50)
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text("Year");
+
+  const max = d3.max(data, function(d) { return d.value; })
 
   // Add Y axis
   const y = d3.scaleLinear()
     .domain([0, 40])
     .range([ height, 0 ]);
   svg.append("g")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y))
+    .append("text") // TODO: 样式调整
+         .attr("transform", "rotate(-90)")
+         .attr("y", 6)
+         .attr("dy", "-5.1em")
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text(yText);
 
   // Another scale for subgroup position?
   const xSubgroup = d3.scaleBand()
@@ -60,7 +90,7 @@ d3.csv(file).then( function(data) {
   // color palette = one color per subgroup
   const color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(['#e41a1c','#377eb8'])
+    .range(['#8EB5F1','#9ED399'])
 
   // Show the bars
   svg.append("g")
@@ -83,7 +113,7 @@ d3.csv(file).then( function(data) {
 }
 
 onMounted(() => {
-  drawTest(props.file)
+  drawTest(props.file, props.title, props.yText)
 })
 </script>
 
