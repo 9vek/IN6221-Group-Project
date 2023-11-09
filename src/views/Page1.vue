@@ -5,9 +5,11 @@ const ewasteData = './src/data/geo/filtered_WasteTreatmentGEOJSON.geojson'
 </script>
 
 <template>
-  <div class="bg-primary h-screen grid grid-cols-2 place-items-center">
+  <div class="bg-primary h-screen grid grid-cols-3 place-items-center">
+    <div class="col-span-2 grid grid-cols-1 place-items-center bg-yellow-100 rounded-lg p-16">
       <MapBubble :file="ewasteData" />
-      <TextWithTitle :title="'test'" :text="'test test test'" />
+    </div>
+    <TextWithTitle :title="'test'" :text="'test test test'" />
   </div>
 </template>
 
