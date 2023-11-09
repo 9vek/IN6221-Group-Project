@@ -10,12 +10,24 @@ const props = defineProps({
   }
 })
 
+const isSliceLargeEnough = function(d) {
+  return getPercentageForLabel(d) > 2;
+};
+
+const getPercentageForLabel = function(d) {
+  const percentage = (d.endAngle - d.startAngle) * (180 / Math.PI) / 360
+  return Math.round(percentage*1000) / 10
+}
+
 const drawTest = (file: String) => {
 
+  d3.select("#donutChart").selectAll("*").remove();
+
+
 // set the dimensions and margins of the graph
-const width = 500,
-    height = 500,
-    margin = 60;
+const width = 1000,
+    height = 700,
+    margin = 70;
 
 // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
 const radius = Math.min(width, height) / 2 - margin
@@ -64,6 +76,7 @@ svg
   .selectAll('allPolylines')
   .data(pie(data))
   .join('polyline')
+    .filter(d => isSliceLargeEnough(d))
     .attr("stroke", "black")
     .style("fill", "none")
     .attr("stroke-width", 1)
@@ -81,11 +94,12 @@ svg
   .selectAll('allLabels')
   .data(pie(data))
   .join('text')
-    .text(d => d.data.waste_type)
+    .text(d => isSliceLargeEnough(d) ? d.data.waste_type + " " + String(getPercentageForLabel(d)) + "%": '')
     .attr('transform', function(d) {
         const pos = outerArc.centroid(d);
         const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
         pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
+        pos[1] = pos[1] + 6;
         return `translate(${pos})`;
     })
     .style('text-anchor', function(d) {
@@ -96,13 +110,68 @@ svg
 }
 
 onMounted(() => {
-  drawTest(props.file)
+  drawTest(props.file + "2000.csv")
 })
+
 </script>
 
 <template>
-  <div id="donutChart"></div>
+   <div id="chart-container">
+    <div id="button-container">
+      <button class="chart-button" @click="drawTest(props.file + '2000.csv')">2000</button>
+      <button class="chart-button" @click="drawTest(props.file + '2001.csv')">2001</button>
+      <button class="chart-button" @click="drawTest(props.file + '2002.csv')">2002</button>
+      <button class="chart-button" @click="drawTest(props.file + '2003.csv')">2003</button>
+      <button class="chart-button" @click="drawTest(props.file + '2004.csv')">2004</button>
+      <button class="chart-button" @click="drawTest(props.file + '2005.csv')">2005</button>
+      <button class="chart-button" @click="drawTest(props.file + '2006.csv')">2006</button>
+      <button class="chart-button" @click="drawTest(props.file + '2007.csv')">2007</button>
+      <button class="chart-button" @click="drawTest(props.file + '2008.csv')">2008</button>
+      <button class="chart-button" @click="drawTest(props.file + '2009.csv')">2009</button>
+      <button class="chart-button" @click="drawTest(props.file + '2010.csv')">2010</button>
+      <button class="chart-button" @click="drawTest(props.file + '2011.csv')">2011</button>
+      <button class="chart-button" @click="drawTest(props.file + '2012.csv')">2012</button>
+      <button class="chart-button" @click="drawTest(props.file + '2013.csv')">2013</button>
+      <button class="chart-button" @click="drawTest(props.file + '2014.csv')">2014</button>
+      <button class="chart-button" @click="drawTest(props.file + '2015.csv')">2015</button>
+    </div>
+    <div id="donutChart"></div>
+  </div>
 </template>
 
 <style scoped>
+#chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#button-container {
+  margin-bottom: 0px; 
+}
+
+button {
+  margin: 0 10px; 
+}
+
+.chart-button {
+  border: 2px solid #007bff; 
+  border-radius: 5px; 
+  background-color: white; 
+  color: #007bff; 
+  padding: 5px 10px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.chart-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+#donutChart {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
 </style>
