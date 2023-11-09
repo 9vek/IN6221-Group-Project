@@ -2,9 +2,9 @@
 import { defineProps, onMounted } from 'vue'
 import * as d3 from "d3"
 
-const props = defineProps({
-  file: String,
-})
+const props = defineProps<{
+  file: string
+}>()
 
 const drawTest = (file: String) => {
 

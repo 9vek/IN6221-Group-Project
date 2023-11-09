@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import BarChart from '../components/charts/BarChart.vue'
 import LineChart from '../components/charts/LineChart.vue'
-
+import TextWithTitle from '../components/charts/TextWithTitle.vue';
 import { ref } from 'vue'
 const wasteDisposedRecycledTitle = ref("Waste Disposed of and Recycled")
 const wasteDisposedRecycledY = ref("Million Tons")
@@ -18,13 +18,14 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIn
 </script>
 
 <template>
-    <div class="h-screen grid grid-cols-1 place-items-center bg-secondary">
+    <div class="h-screen grid grid-cols-2 place-items-center bg-secondary">
       <div class="columns-2">
         <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY"/>
         <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY"/>
         <LineChart :file="solidFilled" :title="solidFilledTitle" :y-text="solidFilledY"/>
         <LineChart :file="solidEnergy" :title="solidEnergyTitle" :y-text="solidEnergyY"/>
       </div>
+      <TextWithTitle :title="'test'" :text="'test test test'" />
     </div>
 </template>
 
