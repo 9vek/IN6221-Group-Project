@@ -48,10 +48,6 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
       .style("stroke", "black")
       .style("opacity", .3)
 
-      const color = d3.scaleOrdinal()
-      .domain(["A", "B", "C" ])
-      .range([ "#402D54", "#D18975", "#8FD175"])
-
     // create a tooltip
     const Tooltip = d3.select("#map")
       .append("div")
@@ -73,8 +69,7 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
 
     var tipString: string = ""
     for (const [key, value] of Object.entries(d.properties)) {
-        console.log(key, ":",value);
-        tipString += key + ": " + value + "<br/>"
+        tipString += "<b>" + key + ": </b>" + value + "<br/>"
     }
 
       Tooltip
@@ -87,32 +82,44 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
     }
 
     updateDataRef.value = (input: string) => {
+      svg.selectAll(".circle").remove();
+
       var data = infoData1
+      var fill = "#60a5fa"
+      var stroke = "#60a5fa"
 
         if (input == "2") {
           data = infoData2
+          fill = "#c084fc"
+          stroke = "#c084fc"
         }
 
         if (input == "1") {
           data = infoData1
+          fill = "#60a5fa"
+          stroke = "#60a5fa"
         }
-          // Add circles
+
       svg
         .selectAll("myCircles")
         .data(data.features)
         .join("circle")
         .attr("cx", d => projection(d.geometry.coordinates)[0])
         .attr("cy", d => projection(d.geometry.coordinates)[1])
-        .attr("r", 8)
+        .attr("r", 0)
         .attr("class", "circle")
-        .style("fill", "69b3a2")
-        .attr("stroke", "#69b3a2")
+        .style("fill", fill)
+        .attr("stroke", stroke)
         .attr("stroke-width", 1)
-        .attr("fill-opacity", .3)
+        .attr("fill-opacity", .2)
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
+        .transition()
+        .attr("r", 6); 
     }
+
+    updateDataRef.value("1")
   })
 }
 
@@ -122,10 +129,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <div @click="updateData('1')" class="btn"> Data1 </div>
-    <div @click="updateData('2')" class="btn"> Data2 </div>
-    <div id="map" class="w-full h-full"></div>
+  <div class="w-fit h-fit">
+
+      <label class="label cursor-pointer">
+        <span class="label-text">E-Waste Recycling Points</span> 
+        <input @click="updateData('1')" type="radio" name="radio" class="radio checked:bg-blue-300" checked />
+      </label>
+
+      <label class="label cursor-pointer">
+        <span class="label-text">Toxic Industrial Wastes Treatment and Disposal Facilities</span> 
+        <input @click="updateData('2')" type="radio" name="radio" class="radio checked:bg-purple-300" />
+      </label>
+      
+    <div id="map"></div>
+
   </div>
 </template>
 
