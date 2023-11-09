@@ -87,17 +87,20 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
       var data = infoData1
       var fill = "#60a5fa"
       var stroke = "#60a5fa"
+      var r = 6
 
         if (input == "2") {
           data = infoData2
           fill = "#c084fc"
           stroke = "#c084fc"
+          r = 7
         }
 
         if (input == "1") {
           data = infoData1
           fill = "#60a5fa"
           stroke = "#60a5fa"
+          r = 6
         }
 
       svg
@@ -116,7 +119,7 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
         .transition()
-        .attr("r", 6); 
+        .attr("r", r); 
     }
 
     updateDataRef.value("1")
