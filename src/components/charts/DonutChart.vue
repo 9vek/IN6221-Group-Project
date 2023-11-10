@@ -4,11 +4,25 @@ import * as d3 from "d3"
 
 const selectedYear = ref(2000);
 
+const nextYear = () => {
+  if (selectedYear.value < 2015) {
+    selectedYear.value += 1
+    drawTest(props.file);
+  }
+};
+
+const previousYear = () => {
+  if (selectedYear.value > 2000) {
+    selectedYear.value -= 1
+    drawTest(props.file);
+  }
+};
+
 const handleYearChange = (event) => {
   selectedYear.value = event.target.value;
-
   drawTest(props.file);
 };
+
 const props = defineProps({
   file: {
     file: String,
@@ -144,7 +158,11 @@ onMounted(() => {
 
 <template>
   <div id="chart-container" class="w-full h-full p-16">
-    <div class="w-full">
+    <div class="w-full grid grid-rows-2">
+      <div class="join w-full grid grid-cols-2 pb-5">
+        <button @click="previousYear" class="join-item btn btn-outline">Previous</button>
+        <button @click="nextYear" class="join-item btn btn-outline">Next</button>
+      </div>
       <input :value="selectedYear" type="range" min="2000" max="2015" class="range" step="1" @input="handleYearChange" />
       <div class="w-full flex justify-between text-xl px-2">
         <span>2000</span>
