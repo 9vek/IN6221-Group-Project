@@ -37,10 +37,10 @@ router.afterEach((to, _) => {
     barColor.value = '#eee9f6'
     ghStyle.value = "btn btn-circle btn-accent"
   }
-  else if (to.path == '/7'){
-    barColor.value = '#edf1f9'
-    ghStyle.value = "btn btn-circle btn-neural"
-  }
+  // else if (to.path == '/7'){
+  //   barColor.value = '#edf1f9'
+  //   ghStyle.value = "btn btn-circle btn-neural"
+  // }
 })
 </script>
 

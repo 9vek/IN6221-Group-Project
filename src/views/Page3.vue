@@ -12,8 +12,16 @@ import { p1Text1, p1Text2 } from '../data/text';
     <div class="col-span-2 bg-[#e2f4f6] rounded-r-[32px] p-16">
       <MapBubble :file1="ewasteData" :file2="wasteTreatmentData" />
     </div>
-    <TextWithTitle :title="'Environmental Waste Management and Recycling Facilities Distribution Map'" :text="p1Text1 + p1Text2" />
+    <div class="grid-flow-col auto-cols-max place-items-center">
+      <TextWithTitle :title="'Environmental Waste Management and Recycling Facilities Distribution Map'" :text="p1Text1 + p1Text2" />
+        <div class="place-items-center p-5">
+          <img src='../assets/img/page3-2.jpg' alt="Descriptive text for the image" class="mx-auto h-auto place-items-center rounded-[16px]" />
+        </div>
+    </div> 
   </div>
 </template>
 
 <style scoped></style>
+
+
+

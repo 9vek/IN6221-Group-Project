@@ -25,3 +25,19 @@ Through this visual narrative, witness the oscillating volumes of waste that wer
 
 As the chart climbs, it invites us to reflect not only on the waste we generate but also on the strides we have taken to reclaim and repurpose it. This is the story of Singapore's green journey, charted through data, inviting us to ponder our role in the global effort to nurture our planet.
 `
+
+export const p4Text = `
+The waste-to-energy process diagram illustrates the transformation of everyday waste into electricity, contributing to both environmental sustainability and energy generation efficiency. This streamlined process begins at the reception hall and storage bunker, where waste is collected and prepared for incineration.
+
+The heart of the system, the incinerator or furnace, burns the waste, reducing its volume and creating heat. This heat produces steam that drives turbines, generating electricity that can be used locally or exported to the grid. Our advanced air-cooled condensers, condensate & feed water system ensure that the steam cycle is closed and efficient, conserving water and energy.
+
+Post-combustion, the flue gas undergoes rigorous treatment with specific reagents to clean and filter out pollutants, ensuring that only clean air is released into the atmosphere. The by-products, such as bottom ash, are collected in ash bunkers and can be further processed or safely disposed of. Fly ash and reaction products are also carefully managed, often finding use in construction materials or land reclamation.
+`
+
+export const p5Text = `
+Embark on a detailed exploration of how modern waste incineration plants are not just disposal facilities but powerhouses of energy transformation. On the left, our graph illustrates the fluctuating yet impactful energy output from incineration over time, signaling the potential highs and lows in energy recovery from waste. The data points underscore the critical role of waste-to-energy facilities in contributing to our energy matrix.
+
+Adjacent to the graph is a vivid, detailed depiction of the incineration process, breaking down the complex engineering and chemical processes into an easily digestible format. From the initial waste reception to the final emission controls, each step is meticulously outlined to provide a comprehensive understanding of the journey from trash to kilowatts.
+
+This visual narrative not only informs but also emphasizes the importance of efficient waste management and its potential to supplement our growing energy needs. As we navigate through the specifics of each process, we gain insights into the technical sophistication and environmental considerations that make waste incineration a key player in sustainable resource management.
+`
