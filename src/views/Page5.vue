@@ -2,6 +2,8 @@
 import LineChart from '../components/charts/LineChart.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
 
+import { p5Text } from '../data/text';
+
 import { ref } from 'vue'
 
 const solidEnergyTitle = ref("Energy Produced From Incineration")
@@ -18,7 +20,7 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIn
     </div>
     <div class="grid-flow-col auto-cols-max place-items-center">
       <TextWithTitle :title="'Waste Incineration'"
-        :text="''" />
+        :text="p5Text" />
         <img src='../assets/img/page5.png' alt="Descriptive text for the image" class="h-auto p-5 rounded-[16px]" />
     </div> 
   </div>
