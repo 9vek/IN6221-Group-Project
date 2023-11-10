@@ -136,21 +136,13 @@ onMounted(() => {
 
 <template>
   <div class="w-full h-full">
-    <div class="h-16 grid grid-cols-2">
-      <div @click="updateData('1')" class="grid grid-cols-1 place-items-center bg-blue-200 hover:bg-blue-300 cursor-pointer transition-colors">
+    <div class="h-16 grid grid-cols-2 join">
+      <div @click="updateData('1')" class="join-item btn bg-blue-200 hover:bg-blue-300">
         E-Waste Recycling Points
       </div>
-      <div @click="updateData('2')" class="grid grid-cols-1 place-items-center bg-purple-200 hover:bg-purple-300 cursor-pointer transition-colors">
+      <div @click="updateData('2')" class="join-item btn bg-purple-200 hover:bg-purple-300">
         Toxic Industrial Wastes Treatment and Disposal Facilities
       </div>
-      <!-- <label class="label cursor-pointer"></label>
-      <span class="label-text">E-Waste Recycling Points</span>
-      <input @click="updateData('1')" type="radio" name="radio" class="radio checked:bg-blue-300" checked />
-      </label>
-      <label class="label cursor-pointer">
-        <span class="label-text">Toxic Industrial Wastes Treatment and Disposal Facilities</span>
-        <input @click="updateData('2')" type="radio" name="radio" class="radio checked:bg-purple-300" />
-      </label> -->
     </div>
     <div id="map" class="h-full w-full"></div>
   </div>
