@@ -18,14 +18,14 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIn
 </script>
 
 <template>
-    <div class="h-screen grid grid-cols-1 place-items-center bg-secondary">
+    <div class="h-screen grid grid-cols-2 place-items-center bg-secondary">
       <div class="columns-2">
         <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY"/>
         <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY"/>
         <LineChart :file="solidFilled" :title="solidFilledTitle" :y-text="solidFilledY"/>
         <LineChart :file="solidEnergy" :title="solidEnergyTitle" :y-text="solidEnergyY"/>
       </div>
-      <!-- <TextWithTitle :title="'test'" :text="'test test test'" /> -->
+      <TextWithTitle :title="'test'" :text="'test test test'" />
     </div>
 </template>
 

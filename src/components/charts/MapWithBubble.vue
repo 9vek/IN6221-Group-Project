@@ -7,12 +7,15 @@ const props = defineProps({
   file2: String,
 })
 
-const updateData = ref<(input: string) => void>(() => {})
+const updateData = ref<(input: string) => void>(() => { })
 
 const drawTest = (file1: String, file2: String, updateDataRef: any) => {
   // set width and height of svg
-  const width = 600
-  const height = 400
+  const container = d3.select("#map");
+  const width = container.node().getBoundingClientRect().width;
+  const height = container.node().getBoundingClientRect().height;
+  // const width = 600
+  // const height = 800
 
   // The svg
   const svg = d3.select("#map")
@@ -67,10 +70,10 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
       var xPosition = event.pageX;
       var yPosition = event.pageY;
 
-    var tipString: string = ""
-    for (const [key, value] of Object.entries(d.properties)) {
+      var tipString: string = ""
+      for (const [key, value] of Object.entries(d.properties)) {
         tipString += "<b>" + key + ": </b>" + value + "<br/>"
-    }
+      }
 
       Tooltip
         .html(tipString)
@@ -89,19 +92,19 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
       var stroke = "#60a5fa"
       var r = 6
 
-        if (input == "2") {
-          data = infoData2
-          fill = "#c084fc"
-          stroke = "#c084fc"
-          r = 7
-        }
+      if (input == "2") {
+        data = infoData2
+        fill = "#c084fc"
+        stroke = "#c084fc"
+        r = 7
+      }
 
-        if (input == "1") {
-          data = infoData1
-          fill = "#60a5fa"
-          stroke = "#60a5fa"
-          r = 6
-        }
+      if (input == "1") {
+        data = infoData1
+        fill = "#60a5fa"
+        stroke = "#60a5fa"
+        r = 6
+      }
 
       svg
         .selectAll("myCircles")
@@ -119,7 +122,7 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
         .transition()
-        .attr("r", r); 
+        .attr("r", r);
     }
 
     updateDataRef.value("1")
@@ -132,20 +135,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-fit h-fit">
-
-      <label class="label cursor-pointer">
-        <span class="label-text">E-Waste Recycling Points</span> 
-        <input @click="updateData('1')" type="radio" name="radio" class="radio checked:bg-blue-300" checked />
+  <div class="w-full h-full">
+    <div class="h-16 grid grid-cols-2">
+      <div @click="updateData('1')" class="grid grid-cols-1 place-items-center bg-blue-200 hover:bg-blue-300 cursor-pointer transition-colors">
+        E-Waste Recycling Points
+      </div>
+      <div @click="updateData('2')" class="grid grid-cols-1 place-items-center bg-purple-200 hover:bg-purple-300 cursor-pointer transition-colors">
+        Toxic Industrial Wastes Treatment and Disposal Facilities
+      </div>
+      <!-- <label class="label cursor-pointer"></label>
+      <span class="label-text">E-Waste Recycling Points</span>
+      <input @click="updateData('1')" type="radio" name="radio" class="radio checked:bg-blue-300" checked />
       </label>
-
       <label class="label cursor-pointer">
-        <span class="label-text">Toxic Industrial Wastes Treatment and Disposal Facilities</span> 
+        <span class="label-text">Toxic Industrial Wastes Treatment and Disposal Facilities</span>
         <input @click="updateData('2')" type="radio" name="radio" class="radio checked:bg-purple-300" />
-      </label>
-      
-    <div id="map"></div>
-
+      </label> -->
+    </div>
+    <div id="map" class="h-full w-full"></div>
   </div>
 </template>
 

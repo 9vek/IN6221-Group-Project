@@ -24,9 +24,12 @@ const props = defineProps({
 const drawTest = (file: string, title: string, yText: string) => {
 
   // set the dimensions and margins of the graph
-  const margin = {top: 10, right: 30, bottom: 30, left: 60},
-      width = 460 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+  const container = d3.select("#lineChart")
+  const margin = {top: 10, right: 30, bottom: 30, left: 60}
+  let width = container.node().getBoundingClientRect().width
+  let height = container.node().getBoundingClientRect().height
+  width -= margin.left - margin.right
+  height -= margin.top - margin.bottom
 
   // append the svg object to the body of the page
   const svg = d3.select("#lineChart")
@@ -126,7 +129,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="lineChart"></div>
+  <div id="lineChart" class="w-full h-full"></div>
 </template>
 
 <style scoped>

@@ -9,9 +9,10 @@ const props = defineProps<{
 const drawTest = (file: String) => {
 
   // set the dimensions and margins of the graph
-  const width = 500,
-    height = 500,
-    margin = 60;
+  const container = d3.select("#pieChart");
+  const width = container.node().getBoundingClientRect().width;
+  const height = container.node().getBoundingClientRect().height;
+  const margin = 60;
 
   // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
   const radius = Math.min(width, height) / 2 - margin
@@ -97,7 +98,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="pieChart"></div>
+  <div id="pieChart" class="w-full h-full"></div>
 </template>
 
 <style scoped></style>

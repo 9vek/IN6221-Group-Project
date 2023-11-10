@@ -7,8 +7,8 @@ const wasteTreatmentData = './src/data/geo/filtered_WasteTreatmentGEOJSON.geojso
 </script>
 
 <template>
-  <div class="bg-primary h-screen grid grid-cols-3 place-items-center">
-    <div class="col-span-2 grid grid-cols-1 place-items-center bg-yellow-50 rounded-[32px] p-16">
+  <div class="bg-primary h-screen grid grid-cols-3">
+    <div class="col-span-2 bg-yellow-50 rounded-xl p-16">
       <MapBubble :file1="ewasteData" :file2="wasteTreatmentData" />
     </div>
     <TextWithTitle :title="'test'" :text="'test test test'" />
