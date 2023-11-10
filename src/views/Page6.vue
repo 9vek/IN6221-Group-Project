@@ -22,7 +22,6 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilled
         <div class="p-5">
           <img src='../assets/img/page6.png' alt="Descriptive text for the image" class="h-auto rounded-[16px]" />
         </div>
-        
     </div> 
   </div>
 </template>
