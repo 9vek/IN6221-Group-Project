@@ -53,22 +53,22 @@ router.afterEach((to, _) => {
     <div class="navbar-center lg:flex">
       <ul class="menu menu-horizontal gap-2">
         <button @click="() => router.push('/1')" class="btn btn-primary">
-          Item 1
+          Recycling Rates
         </button>
         <button @click="() => router.push('/2')" class="btn btn-primary">
-          Item 2
+          Recycling Journey
         </button>
         <button @click="() => router.push('/3')" class="btn btn-secondary">
-          Item 3
+          SG Recycling Map
         </button>
         <button @click="() => router.push('/4')" class="btn btn-secondary">
-          Item 4
+          Recycling Benifits
         </button>
         <button @click="() => router.push('/5')" class="btn btn-accent">
-          Item 5
+          Waste Incineration
         </button>
         <button @click="() => router.push('/6')" class="btn btn-accent">
-          Item 6
+          Waste Landfill
         </button>
         <button @click="() => router.push('/7')" class="btn btn-base">
           Item 7

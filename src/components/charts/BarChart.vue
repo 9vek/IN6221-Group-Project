@@ -37,12 +37,34 @@ const drawTest = (file: string, title: string, yText: string) => {
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`)
 
+  // svg.append("text")
+  //   .attr("transform", "translate(100,0)")
+  //   .attr("x", -50)
+  //   .attr("y", 50) // TODO: 错位
+  //   .attr("font-size", "24px")
+  //   .text(title)
+
   svg.append("text")
-    .attr("transform", "translate(100,0)")
-    .attr("x", -50)
-    .attr("y", 50) // TODO: 错位
+    .attr("x", 20)
+    .attr("y", 50)
     .attr("font-size", "24px")
-    .text(title)
+    .attr("fill", '#8EB5F1') // Set color to blue
+    .text("Waste Disposed");
+
+  // Title Part 2: "of and"
+  svg.append("text")
+    .attr("x", 200) // Adjust x position accordingly
+    .attr("y", 50)
+    .attr("font-size", "24px")
+    .text("of and");
+
+  // Title Part 3: "Recycled"
+  svg.append("text")
+    .attr("x", 280) // Adjust x position accordingly
+    .attr("y", 50)
+    .attr("font-size", "24px")
+    .attr("fill", '#9ED399') // Set color to green
+    .text("Recycled");
 
   // Parse the Data
   d3.csv(file).then(function (data) {
