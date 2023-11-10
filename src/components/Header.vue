@@ -21,7 +21,11 @@ router.afterEach((to, _) => {
     barColor.value = '#e2f4f6'
     ghStyle.value = "btn btn-circle btn-secondary"
   }
-  else {
+  else if (to.path == '/3'){
+    barColor.value = '#eee9f6'
+    ghStyle.value = "btn btn-circle btn-accent"
+  }  
+  else if (to.path == '/4'){
     barColor.value = '#eee9f6'
     ghStyle.value = "btn btn-circle btn-accent"
   }
@@ -44,6 +48,9 @@ router.afterEach((to, _) => {
         </button>
         <button @click="() => router.push('/3')" class="btn btn-accent">
           Item 3
+        </button>
+        <button @click="() => router.push('/4')" class="btn btn-accent">
+          Item 4
         </button>
       </ul>
     </div>

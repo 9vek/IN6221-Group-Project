@@ -11,15 +11,11 @@ const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
 <template>
   <div class="bg-accent h-screen grid grid-cols-3">
     <div class="col-span-2 bg-purple-50 rounded-r-[32px] w-full h-full">
-      <!-- <div class="flex justify-center items-center"> -->
-      <!-- <PieChart :file="pieChartTest"/> -->
-      <DonutChart :file="pieChartTest" />
-      <!-- </div> -->
+      
     </div>
-    <div class="grid grid-rows-2 place-items-center h-full w-full px-16 py-64">
+    <div>
       <TextWithTitle :title="'Recyling Rate by Waste Type'"
         :text="'There are three types of waste with highest recycling rate during 2000 to 2015: Construction Debris, Used Slag, and Ferrous Metal.'" />
-      <Carousel/>
     </div>
   </div>
 </template>

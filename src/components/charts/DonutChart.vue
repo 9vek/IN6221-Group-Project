@@ -167,14 +167,6 @@ onMounted(() => {
   align-items: center;
 }
 
-#button-container {
-  margin-bottom: 0px;
-}
-
-button {
-  margin: 0 10px;
-}
-
 #donutChart {
   width: 90%;
   display: flex;
