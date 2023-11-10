@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { defineProps, onMounted } from 'vue'
+import { defineProps, onMounted, ref } from 'vue'
 import * as d3 from "d3"
 
+const selectedYear = ref(2000);
+
+const handleYearChange = (event) => {
+  selectedYear.value = event.target.value;
+
+  drawTest(props.file);
+};
 const props = defineProps({
   file: {
     file: String,
@@ -19,8 +26,9 @@ const getPercentageForLabel = function(d) {
   return Math.round(percentage*1000) / 10
 }
 
-const drawTest = (file: String) => {
-
+const drawTest = (filePath: string) => {
+  const file = filePath + selectedYear.value + '.csv';
+  console.log(file)
   d3.select("#donutChart").selectAll("*").remove();
 
 
@@ -128,35 +136,18 @@ svg
 }
 
 onMounted(() => {
-  drawTest(props.file + "2000.csv")
+  drawTest(props.file)
 })
 
 </script>
 
 <template>
    <div id="chart-container">
-    <div id="button-container">
-      <button class="btn" @click="drawTest(props.file + '2000.csv')">2000</button>
-      <button class="btn" @click="drawTest(props.file + '2001.csv')">2001</button>
-      <button class="btn" @click="drawTest(props.file + '2002.csv')">2002</button>
-      <button class="btn" @click="drawTest(props.file + '2003.csv')">2003</button>
-      <button class="btn" @click="drawTest(props.file + '2004.csv')">2004</button>
-      <button class="btn" @click="drawTest(props.file + '2005.csv')">2005</button>
-      <button class="btn" @click="drawTest(props.file + '2006.csv')">2006</button>
-      <button class="btn" @click="drawTest(props.file + '2007.csv')">2007</button>
-      <button class="btn" @click="drawTest(props.file + '2008.csv')">2008</button>
-      <button class="btn" @click="drawTest(props.file + '2009.csv')">2009</button>
-      <button class="btn" @click="drawTest(props.file + '2010.csv')">2010</button>
-      <button class="btn" @click="drawTest(props.file + '2011.csv')">2011</button>
-      <button class="btn" @click="drawTest(props.file + '2012.csv')">2012</button>
-      <button class="btn" @click="drawTest(props.file + '2013.csv')">2013</button>
-      <button class="btn" @click="drawTest(props.file + '2014.csv')">2014</button>
-      <button class="btn" @click="drawTest(props.file + '2015.csv')">2015</button>
-    </div>
 
     <div id="donutChart"/>
     
-    <input type="range" min="0" max="16" value="0" class="range" step="1" />
+   <div class="w-fit">
+    <input :value="selectedYear" type="range" min="2000" max="2015" class="range" step="1" @input="handleYearChange" />
     <div class="w-full flex justify-between text-xs px-2">
       <span>2000</span>
       <span>2003</span>
@@ -165,6 +156,8 @@ onMounted(() => {
       <span>2012</span>
       <span>2015</span>
     </div>
+   </div>
+
   </div>
 </template>
 
