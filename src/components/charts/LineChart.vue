@@ -129,7 +129,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="lineChart" class="w-full h-full"></div>
+  <div id="lineChart" class="w-full h-full p-8"></div>
 </template>
 
 <style scoped>

@@ -35,7 +35,7 @@ const drawTest = (file: string, title: string, yText: string) => {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${margin.left},${margin.top})`)
 
   svg.append("text")
     .attr("transform", "translate(100,0)")
@@ -72,7 +72,7 @@ const drawTest = (file: string, title: string, yText: string) => {
 
     // Add Y axis
     const y = d3.scaleLinear()
-      .domain([0, 40])
+      .domain([0, 6])
       .range([height, 0]);
     svg.append("g")
       .call(d3.axisLeft(y))
@@ -98,7 +98,6 @@ const drawTest = (file: string, title: string, yText: string) => {
     // Show the bars
     svg.append("g")
       .selectAll("g")
-      // Enter in data = loop group per group
       .data(data)
       .join("g")
       .attr("transform", d => `translate(${x(d.year)}, 0)`)
@@ -106,11 +105,29 @@ const drawTest = (file: string, title: string, yText: string) => {
       .data(function (d) { return subgroups.map(function (key) { return { key: key, value: d[key] }; }); })
       .join("rect")
       .attr("x", d => xSubgroup(d.key))
-      .attr("y", d => y(d.value))
+      .attr("y", height) // 初始位置设置在 X 轴上
       .attr("width", xSubgroup.bandwidth())
-      .attr("height", d => height - y(d.value))
-      .attr("fill", d => color(d.key));
+      .attr("height", 0) // 初始高度设置为 0
+      .attr("fill", d => color(d.key))
+      .transition() // 添加动画
+      .duration(800) // 动画持续时间，单位为毫秒
+      .attr("y", d => y(d.value))
+      .attr("height", d => height - y(d.value));
 
+    // svg.append("g")
+    //   .selectAll("g")
+    //   // Enter in data = loop group per group
+    //   .data(data)
+    //   .join("g")
+    //   .attr("transform", d => `translate(${x(d.year)}, 0)`)
+    //   .selectAll("rect")
+    //   .data(function (d) { return subgroups.map(function (key) { return { key: key, value: d[key] }; }); })
+    //   .join("rect")
+    //   .attr("x", d => xSubgroup(d.key))
+    //   .attr("y", d => y(d.value))
+    //   .attr("width", xSubgroup.bandwidth())
+    //   .attr("height", d => height - y(d.value))
+    //   .attr("fill", d => color(d.key))
   })
 
 }
