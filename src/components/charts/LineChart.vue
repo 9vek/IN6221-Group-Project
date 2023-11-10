@@ -113,7 +113,7 @@ const drawTest = (file: string, title: string, yText: string) => {
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "url(#line-gradient)" )
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
