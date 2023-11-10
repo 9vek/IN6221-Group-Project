@@ -4,6 +4,7 @@ import Page1 from './views/Page1.vue'
 import Page2 from './views/Page2.vue'
 import Page3 from './views/Page3.vue'
 import Page4 from './views/Page4.vue'
+import Page5 from './views/Page5.vue'
 
 const webHistory = createWebHistory()
 
@@ -34,6 +35,11 @@ const router = createRouter({
       path: '/4',
       name: "page4", // remember to modify
       component: Page4,
+    }, 
+    {
+      path: '/5',
+      name: "page5", // remember to modify
+      component: Page5,
     }, 
   ]
 })
