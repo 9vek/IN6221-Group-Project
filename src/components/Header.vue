@@ -70,9 +70,6 @@ router.afterEach((to, _) => {
         <button @click="() => router.push('/6')" class="btn btn-accent">
           Waste Landfill
         </button>
-        <button @click="() => router.push('/7')" class="btn btn-base">
-          Item 7
-        </button>
       </ul>
     </div>
 
