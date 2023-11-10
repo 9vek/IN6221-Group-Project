@@ -3,6 +3,7 @@ import MapBubble from '../components/charts/MapWithBubble.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
 const ewasteData = './src/data/geo/filtered_EwasteRecycling.geojson'
 const wasteTreatmentData = './src/data/geo/filtered_WasteTreatmentGEOJSON.geojson'
+import { p1Text1, p1Text2 } from '../data/text';
 
 </script>
 
@@ -11,7 +12,7 @@ const wasteTreatmentData = './src/data/geo/filtered_WasteTreatmentGEOJSON.geojso
     <div class="col-span-2 bg-yellow-50 rounded-r-[32px] p-16">
       <MapBubble :file1="ewasteData" :file2="wasteTreatmentData" />
     </div>
-    <TextWithTitle :title="'test'" :text="'test test test'" />
+    <TextWithTitle :title="'Environmental Waste Management and Recycling Facilities Distribution Map'" :text="p1Text1 + p1Text2" />
   </div>
 </template>
 

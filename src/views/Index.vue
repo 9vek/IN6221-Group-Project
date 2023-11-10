@@ -1,17 +1,23 @@
 <script setup lang='ts'>
 import * as d3 from 'd3'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
+import hp0 from '../assets/hp0.png'
 import hp1 from '../assets/hp1.jpg'
+import hp2 from '../assets/hp2.jpg'
+import hp3 from '../assets/hp3.jpg'
+import hp4 from '../assets/hp4.jpg'
+import { hpText } from '../data/text'
 import { onMounted } from 'vue';
+
 
 const drawTest = () => {
   // 模拟的数据
   const nodes = [
-    { id: "node1", image: hp1, r: 100 },
-    { id: "node2", image: hp1, r: 120 },
-    { id: "node1", image: hp1, r: 150 },
-    { id: "node2", image: hp1, r: 130 },
-    { id: "node1", image: hp1, r: 100 },
+    { id: "node1", image: hp0, r: 200 },
+    { id: "node2", image: hp1, r: 150 },
+    { id: "node3", image: hp2, r: 110 },
+    { id: "node4", image: hp3, r: 130 },
+    { id: "node5", image: hp4, r: 130 },
     // ... 其他节点
   ];
 
@@ -94,7 +100,10 @@ onMounted(() => {
     <!-- <div class="col-span-2"> -->
     <div id="force" class=""></div>
     <!-- </div> -->
-    <TextWithTitle :title="'test'" :text="'test test test'" />
+    <div class="pr-16 grid grid-cols-1 place-items-center">
+      <TextWithTitle :title="'Mapping Singapore\'s Green Revolution: A Dive into Waste Management and Recycling Statistics'" :text="hpText" />
+    </div>
+    
   </div>
 
   <!-- <img :src="hp1" class="w-96 h-96 bg-stone-50 rounded-full p-2 shadow-md"> -->

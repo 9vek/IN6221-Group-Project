@@ -12,7 +12,7 @@ const props = defineProps<{
         <div class="text-3xl font-bold">
             {{ props.title }}
         </div>
-        <div>
+        <div class="mt-4">
             {{ props.text }}
         </div>
     </div>
