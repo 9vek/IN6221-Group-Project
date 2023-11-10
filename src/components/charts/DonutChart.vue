@@ -25,8 +25,8 @@ const drawTest = (file: String) => {
 
 
 // set the dimensions and margins of the graph
-const width = 1000,
-    height = 700,
+const width = 900,
+    height = 500,
     margin = 70;
 
 // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
@@ -70,6 +70,14 @@ svg
   .attr("stroke", "white")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
+  .transition()
+    .duration(1000)
+    .attrTween("d", function(d) {
+        const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+        return function(t) {
+          return arc(interpolate(t));
+        };
+      });
 
 // Add the polylines between chart and labels:
 svg
@@ -88,6 +96,11 @@ svg
       posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
       return [posA, posB, posC]
     })
+    .style("opacity", 0) // Set initial opacity to 0
+      .transition()
+      .duration(1000)
+      .style("opacity", 1); // Transition opacity to 1
+
 
 // Add the polylines between chart and labels:
 svg
@@ -106,6 +119,11 @@ svg
         const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
         return (midangle < Math.PI ? 'start' : 'end')
     })
+    .style("font-size", "14px")  // 设置字体大小为12像素
+    .style("opacity", 0) // Set initial opacity to 0
+    .transition()
+    .duration(1000)
+    .style("opacity", 1); // Transition opacity to 1
   })
 }
 
@@ -118,22 +136,22 @@ onMounted(() => {
 <template>
    <div id="chart-container">
     <div id="button-container">
-      <button class="chart-button" @click="drawTest(props.file + '2000.csv')">2000</button>
-      <button class="chart-button" @click="drawTest(props.file + '2001.csv')">2001</button>
-      <button class="chart-button" @click="drawTest(props.file + '2002.csv')">2002</button>
-      <button class="chart-button" @click="drawTest(props.file + '2003.csv')">2003</button>
-      <button class="chart-button" @click="drawTest(props.file + '2004.csv')">2004</button>
-      <button class="chart-button" @click="drawTest(props.file + '2005.csv')">2005</button>
-      <button class="chart-button" @click="drawTest(props.file + '2006.csv')">2006</button>
-      <button class="chart-button" @click="drawTest(props.file + '2007.csv')">2007</button>
-      <button class="chart-button" @click="drawTest(props.file + '2008.csv')">2008</button>
-      <button class="chart-button" @click="drawTest(props.file + '2009.csv')">2009</button>
-      <button class="chart-button" @click="drawTest(props.file + '2010.csv')">2010</button>
-      <button class="chart-button" @click="drawTest(props.file + '2011.csv')">2011</button>
-      <button class="chart-button" @click="drawTest(props.file + '2012.csv')">2012</button>
-      <button class="chart-button" @click="drawTest(props.file + '2013.csv')">2013</button>
-      <button class="chart-button" @click="drawTest(props.file + '2014.csv')">2014</button>
-      <button class="chart-button" @click="drawTest(props.file + '2015.csv')">2015</button>
+      <button class="btn" @click="drawTest(props.file + '2000.csv')">2000</button>
+      <button class="btn" @click="drawTest(props.file + '2001.csv')">2001</button>
+      <button class="btn" @click="drawTest(props.file + '2002.csv')">2002</button>
+      <button class="btn" @click="drawTest(props.file + '2003.csv')">2003</button>
+      <button class="btn" @click="drawTest(props.file + '2004.csv')">2004</button>
+      <button class="btn" @click="drawTest(props.file + '2005.csv')">2005</button>
+      <button class="btn" @click="drawTest(props.file + '2006.csv')">2006</button>
+      <button class="btn" @click="drawTest(props.file + '2007.csv')">2007</button>
+      <button class="btn" @click="drawTest(props.file + '2008.csv')">2008</button>
+      <button class="btn" @click="drawTest(props.file + '2009.csv')">2009</button>
+      <button class="btn" @click="drawTest(props.file + '2010.csv')">2010</button>
+      <button class="btn" @click="drawTest(props.file + '2011.csv')">2011</button>
+      <button class="btn" @click="drawTest(props.file + '2012.csv')">2012</button>
+      <button class="btn" @click="drawTest(props.file + '2013.csv')">2013</button>
+      <button class="btn" @click="drawTest(props.file + '2014.csv')">2014</button>
+      <button class="btn" @click="drawTest(props.file + '2015.csv')">2015</button>
     </div>
     <div id="donutChart"></div>
   </div>
@@ -152,21 +170,6 @@ onMounted(() => {
 
 button {
   margin: 0 10px; 
-}
-
-.chart-button {
-  border: 2px solid #007bff; 
-  border-radius: 5px; 
-  background-color: white; 
-  color: #007bff; 
-  padding: 5px 10px; 
-  cursor: pointer; 
-  transition: background-color 0.3s, color 0.3s; 
-}
-
-.chart-button:hover {
-  background-color: #007bff;
-  color: white;
 }
 
 #donutChart {
