@@ -16,7 +16,7 @@ const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
       <DonutChart :file="pieChartTest" />
       <!-- </div> -->
     </div>
-    <div>
+    <div class="grid grid-rows-2 place-items-center">
       <TextWithTitle :title="'Recyling Rate by Waste Type'"
         :text="'There are three types of waste with highest recycling rate during 2000 to 2015: Construction Debris, Used Slag, and Ferrous Metal.'" />
       <Carousel></Carousel>
