@@ -51,7 +51,7 @@ onMounted(() => {
     <div class="h-screen overflow-hidden scrollbar-none">
       <router-view></router-view>
     </div>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
