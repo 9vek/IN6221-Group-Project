@@ -14,16 +14,8 @@ const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
         <DonutChart :file="pieChartTest"/>
       </div>
     </div>
-    <TextWithTitle :title="'test'" :text="'test test test'" />
+    <TextWithTitle :title="'Recyling Rate by Waste Type'" :text="'There are three types of waste with highest recycling rate during 2000 to 2015: Construction Debris, Used Slag, and Ferrous Metal.'"/>
   </div>
-
-    <div class="h-screen flex justify-center items-center bg-accent">
-      <div class="flex justify-center items-center">
-        <!-- <PieChart :file="pieChartTest"/> -->
-        <DonutChart :file="pieChartTest"/>
-      </div>
-      <!-- <TextWithTitle :title="'test'" :text="'test test test'" /> -->
-    </div>
 </template>
 
 <style scoped>

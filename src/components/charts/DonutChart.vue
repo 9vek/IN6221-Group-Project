@@ -153,7 +153,18 @@ onMounted(() => {
       <button class="btn" @click="drawTest(props.file + '2014.csv')">2014</button>
       <button class="btn" @click="drawTest(props.file + '2015.csv')">2015</button>
     </div>
-    <div id="donutChart"></div>
+
+    <div id="donutChart"/>
+    
+    <input type="range" min="0" max="16" value="0" class="range" step="1" />
+    <div class="w-full flex justify-between text-xs px-2">
+      <span>2000</span>
+      <span>2003</span>
+      <span>2006</span>
+      <span>2009</span>
+      <span>2012</span>
+      <span>2015</span>
+    </div>
   </div>
 </template>
 
