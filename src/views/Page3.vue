@@ -1,23 +1,18 @@
 <script setup lang='ts'>
-//import PieChart from '../components/charts/PieChart.vue'
-import DonutChart from '../components/charts/DonutChart.vue'
+import MapBubble from '../components/charts/MapWithBubble.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
-import Carousel from '../components/Carousel.vue';
+const ewasteData = './src/data/geo/filtered_EwasteRecycling.geojson'
+const wasteTreatmentData = './src/data/geo/filtered_WasteTreatmentGEOJSON.geojson'
+import { p1Text1, p1Text2 } from '../data/text';
 
-import { ref } from 'vue'
-const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
 </script>
 
 <template>
-  <div class="bg-accent h-screen grid grid-cols-3">
-    <div class="col-span-2 bg-purple-50 rounded-r-[32px] w-full h-full">
-      <DonutChart :file="pieChartTest" />
+  <div class="bg-secondary h-screen grid grid-cols-3">
+    <div class="col-span-2 bg-[#e2f4f6] rounded-r-[32px] p-16">
+      <MapBubble :file1="ewasteData" :file2="wasteTreatmentData" />
     </div>
-    <div class="grid-flow-col auto-cols-max place-items-center">
-      <TextWithTitle :title="'Recyling Rate by Waste Type'"
-        :text="'There are three types of waste with highest recycling rate during 2000 to 2015: Construction Debris, Used Slag, and Ferrous Metal.'" />
-        <img src='../assets/img/page1-3pic.png' alt="Descriptive text for the image" class="h-auto p-5" />
-    </div>
+    <TextWithTitle :title="'Environmental Waste Management and Recycling Facilities Distribution Map'" :text="p1Text1 + p1Text2" />
   </div>
 </template>
 

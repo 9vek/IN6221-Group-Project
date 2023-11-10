@@ -18,20 +18,28 @@ router.afterEach((to, _) => {
     ghStyle.value = "btn btn-circle btn-primary"
   }
   else if (to.path == '/2') {
-    barColor.value = '#e2f4f6'
-    ghStyle.value = "btn btn-circle btn-secondary"
+    barColor.value = '#fffae8'
+    ghStyle.value = "btn btn-circle btn-primary"
   }
   else if (to.path == '/3'){
-    barColor.value = '#eee9f6'
-    ghStyle.value = "btn btn-circle btn-accent"
+    barColor.value = '#e2f4f6'
+    ghStyle.value = "btn btn-circle btn-secondary"
   }  
   else if (to.path == '/4'){
-    barColor.value = '#eee9f6'
-    ghStyle.value = "btn btn-circle btn-accent"
+    barColor.value = '#e2f4f6'
+    ghStyle.value = "btn btn-circle btn-secondary"
   }
   else if (to.path == '/5'){
     barColor.value = '#eee9f6'
     ghStyle.value = "btn btn-circle btn-accent"
+  }
+  else if (to.path == '/6'){
+    barColor.value = '#eee9f6'
+    ghStyle.value = "btn btn-circle btn-accent"
+  }
+  else if (to.path == '/7'){
+    barColor.value = '#edf1f9'
+    ghStyle.value = "btn btn-circle btn-neural"
   }
 })
 </script>
@@ -47,17 +55,23 @@ router.afterEach((to, _) => {
         <button @click="() => router.push('/1')" class="btn btn-primary">
           Item 1
         </button>
-        <button @click="() => router.push('/2')" class="btn btn-secondary">
+        <button @click="() => router.push('/2')" class="btn btn-primary">
           Item 2
         </button>
-        <button @click="() => router.push('/3')" class="btn btn-accent">
+        <button @click="() => router.push('/3')" class="btn btn-secondary">
           Item 3
         </button>
-        <button @click="() => router.push('/4')" class="btn btn-accent">
+        <button @click="() => router.push('/4')" class="btn btn-secondary">
           Item 4
         </button>
         <button @click="() => router.push('/5')" class="btn btn-accent">
           Item 5
+        </button>
+        <button @click="() => router.push('/6')" class="btn btn-accent">
+          Item 6
+        </button>
+        <button @click="() => router.push('/7')" class="btn btn-base">
+          Item 7
         </button>
       </ul>
     </div>
