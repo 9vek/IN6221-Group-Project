@@ -3,6 +3,7 @@
 import DonutChart from '../components/charts/DonutChart.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
 import Carousel from '../components/Carousel.vue';
+import Image from '../../guide_img/folder_termi.png'
 
 import { ref } from 'vue'
 const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
@@ -11,7 +12,7 @@ const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
 <template>
   <div class="bg-accent h-screen grid grid-cols-3">
     <div class="col-span-2 bg-purple-50 rounded-r-[32px] w-full h-full">
-      
+      <img src='../../guide_img/folder_termi.png' alt="Descriptive text for the image" class="max-w-full h-auto rounded-r-[32px]" />
     </div>
     <div>
       <TextWithTitle :title="'Recyling Rate by Waste Type'"
