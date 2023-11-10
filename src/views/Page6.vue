@@ -4,9 +4,9 @@ import TextWithTitle from '../components/charts/TextWithTitle.vue';
 
 import { ref } from 'vue'
 
-const solidEnergyTitle = ref("Energy Produced From Incineration")
-const solidEnergyY = ref("MWh")
-const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIncinerationAnnual.csv')
+const solidEnergyTitle = ref("Total Waste Landfilled")
+const solidEnergyY = ref("Million tonnes")
+const solidEnergy = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilledAnnual.csv')
 </script>
 
 <template>
