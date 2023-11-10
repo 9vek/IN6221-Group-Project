@@ -15,8 +15,8 @@ const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
       <img src='../assets/img/page4.png' alt="Descriptive text for the image" class="max-w-full h-auto rounded-r-[32px]" />
     </div>
     <div>
-      <TextWithTitle :title="'Recyling Rate by Waste Type'"
-        :text="'There are three types of waste with highest recycling rate during 2000 to 2015: Construction Debris, Used Slag, and Ferrous Metal.'" />
+      <TextWithTitle :title="'Benifits of Waste Management'"
+        :text="''" />
     </div>
   </div>
 </template>

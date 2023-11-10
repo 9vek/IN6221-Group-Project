@@ -17,9 +17,12 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilled
       </div>
     </div>
     <div class="grid-flow-col auto-cols-max place-items-center">
-      <TextWithTitle :title="'Recyling Rate by Waste Type'"
-        :text="'There are three types of waste with highest recycling rate during 2000 to 2015: Construction Debris, Used Slag, and Ferrous Metal.'" />
-        <img src='../../guide_img/folder_termi.png' alt="Descriptive text for the image" class="h-auto rounded-[16px]" />
+      <TextWithTitle :title="'Waste Landfill'"
+        :text="''" />
+        <div class="p-5">
+          <img src='../assets/img/page6.png' alt="Descriptive text for the image" class="h-auto rounded-[16px]" />
+        </div>
+        
     </div> 
   </div>
 </template>
