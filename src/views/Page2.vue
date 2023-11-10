@@ -1,11 +1,12 @@
 <script setup lang='ts'>
 import BarChart from '../components/charts/BarChart.vue'
-import LineChart from '../components/charts/LineChart.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
 import { ref } from 'vue'
 const wasteDisposedRecycledTitle = ref("Waste Disposed of and Recycled")
 const wasteDisposedRecycledY = ref("Million Tons")
 const wasteDisposedRecycled = ref('./src/data/csv/WasteDisposedOfAndRecycledAnnual.csv')
+
+import { p2Text } from '../data/text';
 
 const solidFilled = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilledAnnual.csv')
 const solidFilledTitle = ref("Total Waste Landfilled")
@@ -25,7 +26,7 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIn
       <!-- <LineChart :file="solidFilled" :title="solidFilledTitle" :y-text="solidFilledY" /> -->
       <!-- <LineChart :file="solidEnergy" :title="solidEnergyTitle" :y-text="solidEnergyY" /> -->
     </div>
-    <TextWithTitle :title="'test'" :text="'test test test'" />
+    <TextWithTitle :title="'Charting the Green Shift: Singapore\'s Journey in Waste Management and Recycling (2000-2014)'" :text="p2Text" />
   </div>
 </template>
 
