@@ -20,11 +20,8 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIn
 
 <template>
   <div class="h-screen grid grid-cols-3 bg-primary">
-    <div class="col-span-2 h-full w-full bg-yellow-50 p-16 pb-24 pr-24">
+    <div class="col-span-2 h-full w-full bg-yellow-50 p-16 rounded-r-[32px] pb-24 pr-24">
       <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY" />
-      <!-- <BarChart :file="wasteDisposedRecycled" :title="wasteDisposedRecycledTitle" :y-text="wasteDisposedRecycledY" /> -->
-      <!-- <LineChart :file="solidFilled" :title="solidFilledTitle" :y-text="solidFilledY" /> -->
-      <!-- <LineChart :file="solidEnergy" :title="solidEnergyTitle" :y-text="solidEnergyY" /> -->
     </div>
     <TextWithTitle :title="'Charting the Green Shift: Singapore\'s Journey in Waste Management and Recycling (2000-2014)'" :text="p2Text" />
   </div>

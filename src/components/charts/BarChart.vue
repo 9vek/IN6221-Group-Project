@@ -23,9 +23,9 @@ const props = defineProps({
 const drawTest = (file: string, title: string, yText: string) => {
   // set the dimensions and margins of the graph
   const container = d3.select("#barChart")
-  const margin = { top: 10, right: 30, bottom: 20, left: 50 }
-  let width = container.node().getBoundingClientRect().width
-  let height = container.node().getBoundingClientRect().height
+  const margin = { top: 10, right: 30, bottom: 30, left: 60 }
+  let width = container.node().getBoundingClientRect().width-60
+  let height = container.node().getBoundingClientRect().height-80
   width -= margin.left - margin.right
   height -= margin.top - margin.bottom
 
@@ -79,7 +79,7 @@ const drawTest = (file: string, title: string, yText: string) => {
     const x = d3.scaleBand()
       .domain(groups)
       .range([0, width])
-      .padding([0.2])
+      .padding(0.2)
     svg.append("g")
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x).tickSize(0))
@@ -89,8 +89,6 @@ const drawTest = (file: string, title: string, yText: string) => {
       .attr("text-anchor", "end")
       .attr("stroke", "black")
       .text("Year");
-
-    const max = d3.max(data, function (d) { return d.value; })
 
     // Add Y axis
     const y = d3.scaleLinear()
@@ -110,7 +108,7 @@ const drawTest = (file: string, title: string, yText: string) => {
     const xSubgroup = d3.scaleBand()
       .domain(subgroups)
       .range([0, x.bandwidth()])
-      .padding([0.05])
+      .padding(0.05)
 
     // color palette = one color per subgroup
     const color = d3.scaleOrdinal()

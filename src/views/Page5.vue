@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import LineChart from '../components/charts/LineChart.vue'
+import LineChartDouble from '../components/charts/LineChartDouble.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
 
 import { p5Text } from '../data/text';
@@ -9,13 +9,15 @@ import { ref } from 'vue'
 const solidEnergyTitle = ref("Energy Produced From Incineration")
 const solidEnergyY = ref("MWh")
 const solidEnergy = ref('./src/data/csv/SolidWasteManagementEnergyProducedFromIncinerationAnnual.csv')
+const solidIncineratedY = ref("Million tonnes")
+const solidIncinerated = ref('./src/data/csv/SolidWasteManagementTotalWasteIncinerated.csv')
 </script>
 
 <template>
   <div class="bg-accent h-screen grid grid-cols-3">
     <div class="col-span-2 bg-purple-50 rounded-r-[32px] w-full h-full">
       <div class="chart-container">
-        <LineChart :file="solidEnergy" :title="solidEnergyTitle" :y-text="solidEnergyY"/>
+        <LineChartDouble :file1="solidIncinerated" :y-text1="solidIncineratedY" :file2="solidEnergy" :y-text2="solidEnergyY" :title="solidEnergyTitle"/>
       </div>
     </div>
     <div class="grid-flow-col auto-cols-max place-items-center">

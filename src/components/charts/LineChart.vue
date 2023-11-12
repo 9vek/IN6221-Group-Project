@@ -26,8 +26,8 @@ const drawTest = (file: string, title: string, yText: string) => {
   // set the dimensions and margins of the graph
   const container = d3.select("#lineChart")
   const margin = { top: 10, right: 30, bottom: 30, left: 60 }
-  let width = container.node().getBoundingClientRect().width
-  let height = container.node().getBoundingClientRect().height
+  let width = container.node().getBoundingClientRect().width-60
+  let height = container.node().getBoundingClientRect().height-80
   width -= margin.left - margin.right
   height -= margin.top - margin.bottom
 
@@ -101,8 +101,8 @@ const drawTest = (file: string, title: string, yText: string) => {
           .attr("y2", y(max))
           .selectAll("stop")
           .data([
-            { offset: "0%", color: "blue" },
-            { offset: "100%", color: "red" }
+            { offset: "0%", color: "#5eead4" },
+            { offset: "100%", color: "#22d3ee" }
           ])
           .enter().append("stop")
           .attr("offset", function (d) { return d.offset; })
