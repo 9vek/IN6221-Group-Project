@@ -4,7 +4,7 @@ import DonutChart from '../components/charts/DonutChart.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
 
 import { ref } from 'vue'
-const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
+const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType')
 </script>
 
 <template>
