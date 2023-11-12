@@ -26,7 +26,7 @@
                 </div>
                 <div class="text-stone-50">
                     <a class="text-white font-bold">Sun Haoyang</a> (Web Development & Data Processing),
-                    <a class="text-white font-bold">Yang Huijun</a> (Data Processing)
+                    <a class="text-white font-bold">Yang Huijun</a> (Stroyboard Drafting & Data Processing)
                 </div>
             </div>
         </div>
