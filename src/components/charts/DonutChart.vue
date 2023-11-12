@@ -117,7 +117,7 @@ const drawTest = (filePath: string, updateDataRef: any, selectedYearRef: any) =>
       .attr("stroke", "white")
       .style("stroke-width", "2px")
       .transition()
-      .duration(1000)
+      .duration(800)
       .attrTween("d", function (d) {
         // Use d3.interpolate to compute the smooth transition between the old and new data
         const previous = this._current || { startAngle: 0, endAngle: 0 };
