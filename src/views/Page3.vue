@@ -16,7 +16,7 @@ import { p1Text1, p1Text2 } from '../data/text';
       <TextWithTitle :title="'Environmental Waste Management and Recycling Facilities Distribution Map'" :text="p1Text1 + p1Text2" />
         <div class="place-items-center p-5">
           <img src='../assets/img/page3-2.jpg' alt="Descriptive text for the image" class="mx-auto h-auto place-items-center rounded-[16px]" />
-        </div>
+        </div>  
     </div> 
   </div>
 </template>

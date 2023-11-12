@@ -1,0 +1,5 @@
+- [ ] 焚烧line chart两条线 - shy
+- [ ] bar chart和Line chart: 标题、坐标轴、单位 - qq
+- [ ] Pie chart：改动画 - qq
+- [ ] 按钮选中focus? - shy
+- [ ] line chart 美化: 线条粗细、圆角、颜色、动画 - shy

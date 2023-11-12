@@ -52,7 +52,7 @@ router.afterEach((to, _) => {
 
     <div class="navbar-center lg:flex">
       <ul class="menu menu-horizontal gap-2">
-        <button @click="() => router.push('/1')" class="btn btn-primary">
+        <button @click="() => router.push('/1')" class="btn btn-primary btn-active">
           Recycling Rates
         </button>
         <button @click="() => router.push('/2')" class="btn btn-primary">
