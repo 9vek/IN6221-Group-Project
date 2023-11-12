@@ -11,4 +11,4 @@ This project is developed with Vue3 and D3.js. Tailwind CSS and daisyUI are used
 - **Guan Hanqing**: Web development (create and fix layout, write text contents)
 - **Tang Kaiyuan**: Web development (leader, create force simulation effect on home page, create and fix layout) & Report writing
 - **Sun Haoyang**: Web development (Design color scheme, create d3.js diagrams, create and fix layout) & Data processing (csv spliting for donut chart)
-- **Yang Huijun**: Storyboard drafting & Data processing (geojson content cleaning)
+- **Yang Huijun**: Storyboard drafting & Data processing (geojson content cleaning) & Report writing
