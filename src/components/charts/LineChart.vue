@@ -69,7 +69,7 @@ const drawTest = (file: string, title: string, yText: string) => {
           .call(d3.axisBottom(x))
           .append("text") // TODO: 错位不显示
           .attr("y", 40)
-          .attr("x", width - 20)
+          .attr("x", width - 10)
           .attr("text-anchor", "end")
           .attr("fill", "black")
           .attr("font-size", "16px")

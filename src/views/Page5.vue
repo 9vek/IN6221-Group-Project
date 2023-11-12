@@ -21,7 +21,7 @@ const solidIncinerated = ref('./src/data/csv/SolidWasteManagementTotalWasteIncin
       </div>
     </div>
     <div class="grid-flow-col auto-cols-max place-items-center">
-      <TextWithTitle :title="'Waste Incineration'"
+      <TextWithTitle :title="'Discover the symbiotic relationship between waste incineration and energy generation as illustrated in our comprehensive graph. This visualization captures the steady increase in energy production as a result of the rising volumes of waste processed. The trend underscores a significant correlation between our waste management strategies and their energy-producing outcomes. This graph serves as a testament to the efficiency and technological strides in the waste-to-energy sector.'"
         :text="p5Text" />
         <!-- <img src='../assets/img/page5.png' alt="Descriptive text for the image" class="h-auto p-5 rounded-[16px]" /> -->
     </div> 

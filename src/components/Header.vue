@@ -14,6 +14,10 @@ const btn4Style = ref('btn btn-secondary')
 const btn5Style = ref('btn btn-accent')
 const btn6Style = ref('btn btn-accent')
 
+const gh = () => {
+  window.open("https://github.com/9vek/IN6221-Group-Project")
+};
+
 router.afterEach((to, _) => {
   if (to.path == '/') {
     barColor.value = '#edf1f9'
@@ -118,7 +122,7 @@ router.afterEach((to, _) => {
     </div>
 
     <div class="navbar-end">
-      <button class="transition-all" :class="ghStyle">
+      <button @click="gh" class="transition-all" :class="ghStyle">
         <BrandGithub class="h-5 w-5" />
       </button>
     </div>
