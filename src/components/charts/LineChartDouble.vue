@@ -76,7 +76,7 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
           .call(d3.axisBottom(x))
           .append("text") // TODO: 错位不显示
           .attr("y", 40)
-          .attr("x", width - 20)
+          .attr("x", width - 10)
           .attr("text-anchor", "end")
           .attr("fill", "black")
           .attr("font-size", "16px")
@@ -93,7 +93,7 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
 
         // Add Y axis
         const yl = d3.scaleLinear() // y lft
-          .domain([min1 / 1.05, max1])
+          .domain([min1 / 1.05, max1 * 1.05])
           .range([height, 0]);
         svg.append("g")
           .call(d3.axisLeft(yl))
@@ -109,7 +109,7 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
 
         // Add Y axis to the right
         const yr = d3.scaleLinear() // y rt
-          .domain([min2 / 1.05, max2])
+          .domain([min2 / 1.05, max2  * 1.05])
           .range([height, 0]);
         svg.append("g")
           .attr("transform", `translate(${width}, 0)`) // Move to the right

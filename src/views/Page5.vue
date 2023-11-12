@@ -21,7 +21,7 @@ const solidIncinerated = ref('./src/data/csv/SolidWasteManagementTotalWasteIncin
       </div>
     </div>
     <div class="grid-flow-col auto-cols-max place-items-center">
-      <TextWithTitle :title="'Waste Incineration'"
+      <TextWithTitle :title="'Waste Incineration: A Path to Renewable Energy'"
         :text="p5Text" />
         <!-- <img src='../assets/img/page5.png' alt="Descriptive text for the image" class="h-auto p-5 rounded-[16px]" /> -->
     </div> 

@@ -35,11 +35,7 @@ Post-combustion, the flue gas undergoes rigorous treatment with specific reagent
 `
 
 export const p5Text = `
-Embark on a detailed exploration of how modern waste incineration plants are not just disposal facilities but powerhouses of energy transformation. On the left, our graph illustrates the fluctuating yet impactful energy output from incineration over time, signaling the potential highs and lows in energy recovery from waste. The data points underscore the critical role of waste-to-energy facilities in contributing to our energy matrix.
-
-Adjacent to the graph is a vivid, detailed depiction of the incineration process, breaking down the complex engineering and chemical processes into an easily digestible format. From the initial waste reception to the final emission controls, each step is meticulously outlined to provide a comprehensive understanding of the journey from trash to kilowatts.
-
-This visual narrative not only informs but also emphasizes the importance of efficient waste management and its potential to supplement our growing energy needs. As we navigate through the specifics of each process, we gain insights into the technical sophistication and environmental considerations that make waste incineration a key player in sustainable resource management.
+Discover the symbiotic relationship between waste incineration and energy generation as illustrated in our comprehensive graph. This visualization captures the steady increase in energy production as a result of the rising volumes of waste processed. The trend underscores a significant correlation between our waste management strategies and their energy-producing outcomes. This graph serves as a testament to the efficiency and technological strides in the waste-to-energy sector.
 `
 
 export const p6Text = `This page presents a stark visualization of the challenges posed by waste management in our increasingly consumer-driven society. On the left, a graph titled "Total Waste Landfilled" tracks the fluctuations in the volume of waste deposited in landfills, providing a quantitative glance at our environmental footprint over time. The curve’s trajectory invites contemplation on the effectiveness of waste reduction measures and the impact of our consumption habits.
