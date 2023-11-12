@@ -53,14 +53,14 @@ const drawTest = (file: string, title: string, yText: string) => {
 
   // Title Part 2: "of and"
   svg.append("text")
-    .attr("x", 200) // Adjust x position accordingly
+    .attr("x", 210) // Adjust x position accordingly
     .attr("y", 50)
     .attr("font-size", "24px")
     .text("of and");
 
   // Title Part 3: "Recycled"
   svg.append("text")
-    .attr("x", 280) // Adjust x position accordingly
+    .attr("x", 290) // Adjust x position accordingly
     .attr("y", 50)
     .attr("font-size", "24px")
     .attr("fill", '#9ED399') // Set color to green

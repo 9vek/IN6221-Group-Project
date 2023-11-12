@@ -7,6 +7,8 @@ import { ref } from 'vue'
 const solidEnergyTitle = ref("Total Waste Landfilled")
 const solidEnergyY = ref("Million tonnes")
 const solidEnergy = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilledAnnual.csv')
+
+import { p6Text } from '../data/text';
 </script>
 
 <template>
@@ -18,7 +20,7 @@ const solidEnergy = ref('./src/data/csv/SolidWasteManagementTotalWasteLandfilled
     </div>
     <div class="grid-flow-col auto-cols-max place-items-center">
       <TextWithTitle :title="'Waste Landfill'"
-        :text="''" />
+        :text="p6Text" />
         <div class="p-5">
           <img src='../assets/img/page6.png' alt="Descriptive text for the image" class="h-auto rounded-[16px]" />
         </div>

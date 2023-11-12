@@ -41,3 +41,7 @@ Adjacent to the graph is a vivid, detailed depiction of the incineration process
 
 This visual narrative not only informs but also emphasizes the importance of efficient waste management and its potential to supplement our growing energy needs. As we navigate through the specifics of each process, we gain insights into the technical sophistication and environmental considerations that make waste incineration a key player in sustainable resource management.
 `
+
+export const p6Text = `This page presents a stark visualization of the challenges posed by waste management in our increasingly consumer-driven society. On the left, a graph titled "Total Waste Landfilled" tracks the fluctuations in the volume of waste deposited in landfills, providing a quantitative glance at our environmental footprint over time. The curve’s trajectory invites contemplation on the effectiveness of waste reduction measures and the impact of our consumption habits.
+
+To the right, an aerial snapshot of a waste landfill facility encapsulates the scale of waste containment with annotations that highlight its area, capacity, and the looming deadline of space exhaustion by 2035. This visual alarm bell underscores the urgency with which we must address waste production and explore more sustainable disposal methods.`
