@@ -19,7 +19,7 @@ const previousYear = () => {
 };
 
 const handleYearChange = (event) => {
-  selectedYear.value = event.target.value;
+  selectedYear.value = Number(event.target.value);
   drawTest(props.file);
 };
 
@@ -44,7 +44,6 @@ const drawTest = (filePath: string) => {
   const file = filePath + selectedYear.value + '.csv';
   console.log(file)
   d3.select("#donutChart").selectAll("*").remove();
-
 
   // set the dimensions and margins of the graph
   const container = d3.select("#donutChart");
@@ -83,12 +82,17 @@ const drawTest = (filePath: string) => {
     .outerRadius(radius * 0.9)
 
   d3.csv(file).then(function (data) {
+    const pieData = pie(data);
+
     // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-    svg
+    const slices = svg
       .selectAll('allSlices')
-      .data(pie(data))
-      .join('path')
-      .attr('d', arc)
+      .data(pieData);
+
+    slices
+      .enter()
+      .append('path')
+      .merge(slices)
       .attr('fill', d => color(d.data.waste_type))
       .attr("stroke", "white")
       .style("stroke-width", "2px")
@@ -96,11 +100,21 @@ const drawTest = (filePath: string) => {
       .transition()
       .duration(1000)
       .attrTween("d", function (d) {
-        const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+        // Use d3.interpolate to compute the smooth transition between the old and new data
+        const previous = this._current || { startAngle: 0, endAngle: 0 };
+        console.log(previous)
+        const interpolate = d3.interpolate(previous, d);
+        console.log(interpolate)
+        this._current = interpolate(1); // Save the current data for the next update
+        console.log(this._current)
         return function (t) {
           return arc(interpolate(t));
         };
       });
+
+    slices.exit().remove(); // Remove any unnecessary slices
+
+
 
     // Add the polylines between chart and labels:
     svg

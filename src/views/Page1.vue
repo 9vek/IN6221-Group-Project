@@ -2,7 +2,6 @@
 //import PieChart from '../components/charts/PieChart.vue'
 import DonutChart from '../components/charts/DonutChart.vue'
 import TextWithTitle from '../components/charts/TextWithTitle.vue';
-import Carousel from '../components/Carousel.vue';
 
 import { ref } from 'vue'
 const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
