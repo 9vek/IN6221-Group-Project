@@ -23,14 +23,14 @@ const solidIncinerated = ref('./src/data/csv/SolidWasteManagementTotalWasteIncin
     <div class="grid-flow-col auto-cols-max place-items-center">
       <TextWithTitle :title="'Waste Incineration'"
         :text="p5Text" />
-        <img src='../assets/img/page5.png' alt="Descriptive text for the image" class="h-auto p-5 rounded-[16px]" />
+        <!-- <img src='../assets/img/page5.png' alt="Descriptive text for the image" class="h-auto p-5 rounded-[16px]" /> -->
     </div> 
   </div>
 </template>
 
 <style scoped>
 .chart-container {
-  margin-top: 20px;
+  margin-top: 0px;
   width: 90%; 
   height: 90%;
   padding: 2rem; 

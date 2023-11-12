@@ -23,8 +23,8 @@ const props = defineProps({
 const drawTest = (file: string, title: string, yText: string) => {
   // set the dimensions and margins of the graph
   const container = d3.select("#barChart")
-  const margin = { top: 10, right: 30, bottom: 30, left: 60 }
-  let width = container.node().getBoundingClientRect().width-60
+  const margin = { top: 10, right: 60, bottom: 50, left: 60 }
+  let width = container.node().getBoundingClientRect().width-120
   let height = container.node().getBoundingClientRect().height-80
   width -= margin.left - margin.right
   height -= margin.top - margin.bottom
@@ -47,23 +47,25 @@ const drawTest = (file: string, title: string, yText: string) => {
   svg.append("text")
     .attr("x", 20)
     .attr("y", 50)
-    .attr("font-size", "24px")
-    .attr("fill", '#8EB5F1') // Set color to blue
-    .text("Waste Disposed");
+    .attr("font-size", "28px")
+    .attr("font-weight", "600")
+    .attr("fill", '#60a5fa') // Set color to blue
+    .text("Waste Disposed Of");
 
   // Title Part 2: "of and"
   svg.append("text")
-    .attr("x", 210) // Adjust x position accordingly
+    .attr("x", 270) // Adjust x position accordingly
     .attr("y", 50)
-    .attr("font-size", "24px")
-    .text("of and");
+    .attr("font-size", "28px")
+    .text("and");
 
   // Title Part 3: "Recycled"
   svg.append("text")
-    .attr("x", 290) // Adjust x position accordingly
+    .attr("x", 327) // Adjust x position accordingly
     .attr("y", 50)
-    .attr("font-size", "24px")
-    .attr("fill", '#9ED399') // Set color to green
+    .attr("font-size", "28px")
+    .attr("font-weight", "600")
+    .attr("fill", '#62C858') // Set color to green
     .text("Recycled");
 
   // Parse the Data
@@ -84,10 +86,12 @@ const drawTest = (file: string, title: string, yText: string) => {
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x).tickSize(0))
       .append("text")
-      .attr("y", height - 250) //TODO: 错位不显示
-      .attr("x", width - 50)
+      .attr("y", 40)
+      .attr("x", width - 20)
       .attr("text-anchor", "end")
-      .attr("stroke", "black")
+      .attr("fill", "black")
+      .attr("font-size", "16px")
+      .attr("font-weight", "500")
       .text("Year");
 
     // Add Y axis
@@ -98,10 +102,12 @@ const drawTest = (file: string, title: string, yText: string) => {
       .call(d3.axisLeft(y))
       .append("text") // TODO: 样式调整
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
+      .attr("y", 45)
       .attr("dy", "-5.1em")
       .attr("text-anchor", "end")
-      .attr("stroke", "black")
+      .attr("fill", "black")
+      .attr("font-size", "16px")
+      .attr("font-weight", "500")
       .text(yText);
 
     // Another scale for subgroup position?

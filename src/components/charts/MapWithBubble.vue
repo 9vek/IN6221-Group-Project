@@ -7,9 +7,11 @@ const props = defineProps({
   file2: String,
 })
 
+const btn1Style = ref("join-item btn bg-blue-300 hover:bg-blue-300")
+const btn2Style = ref("join-item btn bg-purple-200 hover:bg-purple-300")
 const updateData = ref<(input: string) => void>(() => { })
 
-const drawTest = (file1: String, file2: String, updateDataRef: any) => {
+const drawTest = (file1: String, file2: String, updateDataRef: any, btn1Style: any, btn2Style: any) => {
   // set width and height of svg
   const container = d3.select("#map");
   const width = container.node().getBoundingClientRect().width;
@@ -92,18 +94,22 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
       var stroke = "#60a5fa"
       var r = 6
 
-      if (input == "2") {
-        data = infoData2
-        fill = "#c084fc"
-        stroke = "#c084fc"
-        r = 7
-      }
-
       if (input == "1") {
         data = infoData1
         fill = "#60a5fa"
         stroke = "#60a5fa"
         r = 6
+        btn1Style.value = 'join-item btn bg-blue-300 hover:bg-blue-300'
+        btn2Style.value = 'join-item btn bg-purple-200 hover:bg-purple-300'
+      }
+
+      if (input == "2") {
+        data = infoData2
+        fill = "#c084fc"
+        stroke = "#c084fc"
+        r = 7
+        btn1Style.value = 'join-item btn bg-blue-200 hover:bg-blue-300'
+        btn2Style.value = 'join-item btn bg-purple-300 hover:bg-purple-300'
       }
 
       svg
@@ -130,17 +136,17 @@ const drawTest = (file1: String, file2: String, updateDataRef: any) => {
 }
 
 onMounted(() => {
-  drawTest(props.file1 as string, props.file2 as string, updateData)
+  drawTest(props.file1 as string, props.file2 as string, updateData, btn1Style, btn2Style)
 })
 </script>
 
 <template>
   <div class="w-full h-full">
     <div class="h-16 grid grid-cols-2 join">
-      <div @click="updateData('1')" class="join-item btn bg-blue-200 hover:bg-blue-300">
+      <div @click="updateData('1')" :class="btn1Style">
         E-Waste Recycling Points
       </div>
-      <div @click="updateData('2')" class="join-item btn bg-purple-200 hover:bg-purple-300">
+      <div @click="updateData('2')" :class="btn2Style">
         Toxic Industrial Wastes Treatment and Disposal Facilities
       </div>
     </div>

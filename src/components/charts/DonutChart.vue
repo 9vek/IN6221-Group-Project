@@ -64,7 +64,7 @@ const drawTest = (filePath: string) => {
 
   // set the color scale
   const color = d3.scaleOrdinal()
-    .range(d3.schemeDark2);
+    .range(['#F49CAB', '#F8A593','#FAB473', '#F6D45C', '#C1EA4E', '#B1E470', '#8EE387', '#75E2CE', '#7CD4F0', '#6AA2E5', '#8286E7', '#9C7FDB', '#D29EF3', '#EFACDC']);
 
   // Compute the position of each group on the pie:
   const pie = d3.pie()
@@ -96,7 +96,6 @@ const drawTest = (filePath: string) => {
       .attr('fill', d => color(d.data.waste_type))
       .attr("stroke", "white")
       .style("stroke-width", "2px")
-      .style("opacity", 0.7)
       .transition()
       .duration(1000)
       .attrTween("d", function (d) {
@@ -200,7 +199,7 @@ onMounted(() => {
 }
 
 #donutChart {
-  width: 90%;
+  width: 120%;
   display: flex;
   justify-content: center;
 }

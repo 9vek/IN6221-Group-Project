@@ -35,7 +35,7 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
 
   // set the dimensions and margins of the graph
   const container = d3.select("#lineChartDouble")
-  const margin = { top: 10, right: 60, bottom: 30, left: 60 }
+  const margin = { top: 10, right: 60, bottom: 40, left: 60 }
   let width = container.node().getBoundingClientRect().width-120
   let height = container.node().getBoundingClientRect().height-80
   width -= margin.left - margin.right
@@ -48,14 +48,6 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  // chart title
-  svg.append("text")
-    .attr("transform", "translate(100,0)")
-    .attr("x", -50)
-    .attr("y", 50)
-    .attr("font-size", "24px")
-    .text(title)
 
   //Read the data
   Promise.all([
@@ -83,10 +75,12 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
           .attr("transform", `translate(0, ${height})`)
           .call(d3.axisBottom(x))
           .append("text") // TODO: 错位不显示
-          .attr("y", height - 250)
-          .attr("x", width - 100)
+          .attr("y", 40)
+          .attr("x", width - 20)
           .attr("text-anchor", "end")
-          .attr("stroke", "black")
+          .attr("fill", "black")
+          .attr("font-size", "16px")
+          .attr("font-weight", "500")
           .text("Year");
 
         // Max value observed:
@@ -105,10 +99,12 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
           .call(d3.axisLeft(yl))
           .append("text") // TODO: 样式调整
           .attr("transform", "rotate(-90)")
-          .attr("y", 6)
+          .attr("y", 35)
           .attr("dy", "-5.1em")
           .attr("text-anchor", "end")
-          .attr("stroke", "black")
+          .attr("fill", "black")
+          .attr("font-size", "13px")
+          .attr("font-weight", "500")
           .text(yText1);
 
         // Add Y axis to the right
@@ -120,10 +116,13 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
           .call(d3.axisRight(yr))
           .append("text")
           .attr("transform", `translate(${width+20}, 0), rotate(-90)`)
-          .attr("y", -width + 60) // Adjust the y position accordingly
+          .attr("y", -width + 95) // Adjust the y position accordingly
+          .attr("x", 6) // Adjust the y position accordingly
           .attr("dy", "-5.1em")
           .attr("text-anchor", "end")
-          .attr("stroke", "black")
+          .attr("fill", "black")
+          .attr("font-size", "13px")
+          .attr("font-weight", "500")
           .text(yText2);
 
         // Set the gradient
@@ -137,7 +136,24 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
           .selectAll("stop")
           .data([
             { offset: "0%", color: "#5eead4" },
-            { offset: "100%", color: "#22d3ee" }
+            { offset: "100%", color: "#38bdf8" }
+          ])
+          .enter().append("stop")
+          .attr("offset", function (d) { return d.offset; })
+          .attr("stop-color", function (d) { return d.color; });
+
+        // Set the gradient
+        svg.append("linearGradient")
+          .attr("id", "text-line-gradient1")
+          .attr("gradientUnits", "userSpaceOnUse")
+          .attr("x1", '0%')
+          .attr("y1", '0%')
+          .attr("x2", '30%')
+          .attr("y2", '0%')
+          .selectAll("stop")
+          .data([
+            { offset: "0%", color: "#2dd4bf" },
+            { offset: "100%", color: "#38bdf8" }
           ])
           .enter().append("stop")
           .attr("offset", function (d) { return d.offset; })
@@ -160,29 +176,92 @@ const drawTest = (file1: string, yText1: string,file2: string, yText2: string, t
           .attr("offset", function (d) { return d.offset; })
           .attr("stop-color", function (d) { return d.color; });
 
+                
+        // Set the gradient
+        svg.append("linearGradient")
+          .attr("id", "text-line-gradient2")
+          .attr("gradientUnits", "userSpaceOnUse")
+          .attr("x1", '0%')
+          .attr("y1", '0%')
+          .attr("x2", '22%')
+          .attr("y2", '0%')
+          .selectAll("stop")
+          .data([
+            { offset: "0%", color: "#facc15" },
+            { offset: "100%", color: "#e879f9" }
+          ])
+          .enter().append("stop")
+          .attr("offset", function (d) { return d.offset; })
+          .attr("stop-color", function (d) { return d.color; });
 
+        svg.append("text")
+          .attr("x", 30)
+          .attr("y", 50)
+          .attr("font-size", "28px")
+          .attr("font-weight", "600")
+          .attr("fill", 'url(#text-line-gradient1)') // Set color to blue
+          .text("Total Waste Incinerated (Million Tonnes)");
 
-    // Add the line
-    svg.append("path")
-      .datum(data1)
-      .attr("fill", "none")
-      .attr("stroke", "url(#line-gradient1)" )
-      .attr("stroke-width", 8)
-      .attr("d", d3.line()
-        .x(function(d) { return x(d.date) })
-        .y(function(d) { return yl(d.value) })
-        )
+        // Title Part 2: "of and"
+        svg.append("text")
+          .attr("x", 30) // Adjust x position accordingly
+          .attr("y", 90)
+          .attr("font-size", "28px")
+          .text("and");
 
-            // Add the line
-    svg.append("path")
-      .datum(data2)
-      .attr("fill", "none")
-      .attr("stroke", "url(#line-gradient2)" )
-      .attr("stroke-width", 8)
-      .attr("d", d3.line()
-        .x(function(d) { return x(d.date) })
-        .y(function(d) { return yr(d.value) })
-        )
+        // Title Part 3: "Recycled"
+        svg.append("text")
+          .attr("x", 30) // Adjust x position accordingly
+          .attr("y", 130)
+          .attr("font-size", "28px")
+          .attr("font-weight", "600")
+          .attr("fill", 'url(#text-line-gradient2)') // Set color to green
+          .text("Energy Produced (MWh)");
+
+        // Add the line
+        const linePath1 = svg.append("path")
+          .datum(data1)
+          .attr("fill", "none")
+          .attr("stroke", "url(#line-gradient1)" )
+          .attr("stroke-width", 6)
+          .attr("stroke-linecap", "round")
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.date) })
+            .y(function(d) { return yl(d.value) })
+            .curve(d3.curveCardinal)
+            )
+          
+        const totalLength1 = linePath1.node().getTotalLength();
+
+                // 设置初始状态
+        linePath1
+          .attr("stroke-dasharray", totalLength1 + " " + totalLength1)
+          .attr("stroke-dashoffset", totalLength1)
+          .transition()
+          .duration(1500) // 调整动画持续时间
+          .attr("stroke-dashoffset", 0);
+
+                // Add the line
+          const linePath2 = svg.append("path")
+          .datum(data2)
+          .attr("fill", "none")
+          .attr("stroke", "url(#line-gradient2)" )
+          .attr("stroke-width", 6)
+          .attr("stroke-linecap", "round")
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.date) })
+            .y(function(d) { return yr(d.value) })
+            .curve(d3.curveCardinal)
+            )
+          
+          const totalLength2 = linePath2.node().getTotalLength();
+
+          linePath2
+          .attr("stroke-dasharray", totalLength2 + " " + totalLength2)
+          .attr("stroke-dashoffset", totalLength2)
+          .transition()
+          .duration(1500) // 调整动画持续时间
+          .attr("stroke-dashoffset", 0);
 
 
       })

@@ -13,7 +13,7 @@ const pieChartTest = ref('./src/data/csv/RecyclingRateByWasteType/')
 <template>
   <div class="bg-secondary h-screen grid grid-cols-3">
     <div class="col-span-2 bg-[#e2f4f6] rounded-r-[32px] grid grid-cols-1 place-items-center w-full h-full">
-      <img src='../assets/img/page4.png' alt="Descriptive text for the image" class="max-w-full h-auto rounded-r-[32px]" />
+      <img src='../assets/img/page4.png' alt="Descriptive text for the image" class="max-w-full h-auto rounded-[32px]" />
     </div>
     <div>
       <TextWithTitle :title="'Benifits of Waste Management'"

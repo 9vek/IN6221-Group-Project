@@ -25,8 +25,8 @@ const drawTest = (file: string, title: string, yText: string) => {
 
   // set the dimensions and margins of the graph
   const container = d3.select("#lineChart")
-  const margin = { top: 10, right: 30, bottom: 30, left: 60 }
-  let width = container.node().getBoundingClientRect().width-60
+  const margin = { top: 10, right: 60, bottom: 40, left: 60 }
+  let width = container.node().getBoundingClientRect().width-120
   let height = container.node().getBoundingClientRect().height-80
   width -= margin.left - margin.right
   height -= margin.top - margin.bottom
@@ -44,7 +44,8 @@ const drawTest = (file: string, title: string, yText: string) => {
     .attr("transform", "translate(100,0)")
     .attr("x", -50) // TODO: 错位
     .attr("y", 50)
-    .attr("font-size", "24px")
+    .attr("font-size", "28px")
+    .attr("font-weight", "600")
     .text(title)
 
   //Read the data
@@ -67,10 +68,12 @@ const drawTest = (file: string, title: string, yText: string) => {
           .attr("transform", `translate(0, ${height})`)
           .call(d3.axisBottom(x))
           .append("text") // TODO: 错位不显示
-          .attr("y", height - 250)
-          .attr("x", width - 100)
+          .attr("y", 40)
+          .attr("x", width - 20)
           .attr("text-anchor", "end")
-          .attr("stroke", "black")
+          .attr("fill", "black")
+          .attr("font-size", "16px")
+          .attr("font-weight", "500")
           .text("Year");
 
         // Max value observed:
@@ -85,10 +88,12 @@ const drawTest = (file: string, title: string, yText: string) => {
           .call(d3.axisLeft(y))
           .append("text") // TODO: 样式调整
           .attr("transform", "rotate(-90)")
-          .attr("y", 6)
+          .attr("y", 45)
           .attr("dy", "-5.1em")
           .attr("text-anchor", "end")
-          .attr("stroke", "black")
+          .attr("fill", "black")
+          .attr("font-size", "16px")
+          .attr("font-weight", "500")
           .text(yText);
 
         // Set the gradient
@@ -108,17 +113,29 @@ const drawTest = (file: string, title: string, yText: string) => {
           .attr("offset", function (d) { return d.offset; })
           .attr("stop-color", function (d) { return d.color; });
 
+        // 计算总路径长度
+        const linePath = svg.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "url(#line-gradient)")
+          .attr("stroke-width", 6)
+          .attr("stroke-linecap", "round")
+          .attr("d", d3.line()
+            .x(function (d) { return x(d.date); })
+            .y(function (d) { return y(d.value); })
+            .curve(d3.curveCardinal)
+          );
 
-    // Add the line
-    svg.append("path")
-      .datum(data)
-      .attr("fill", "none")
-      .attr("stroke", "url(#line-gradient)" )
-      .attr("stroke-width", 8)
-      .attr("d", d3.line()
-        .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.value) })
-        )
+        const totalLength = linePath.node().getTotalLength();
+
+        // 设置初始状态
+        linePath
+          .attr("stroke-dasharray", totalLength + " " + totalLength)
+          .attr("stroke-dashoffset", totalLength)
+          .transition()
+          .duration(1500) // 调整动画持续时间
+          .attr("stroke-dashoffset", 0);
+
 
 
       })

@@ -1,3 +1,2 @@
-- [ ] bar chart和Line chart: 标题加粗改颜色、单位改大字
 - [ ] Pie chart 改动画
 - [ ] line chart 美化: 线条粗细、圆角、动画

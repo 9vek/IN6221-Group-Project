@@ -30,7 +30,7 @@ import { p6Text } from '../data/text';
 
 <style scoped>
 .chart-container {
-  margin-top: 20px;
+  margin-top: 0px;
   width: 90%; 
   height: 90%;
   padding: 2rem; 
